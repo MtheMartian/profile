@@ -10,9 +10,11 @@ function SideMenu(){
     anchors.forEach((anchor: HTMLAnchorElement) =>{
       if(e.currentTarget.getAttribute("href") === anchor.getAttribute("href")){
         anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
+        anchor.style.opacity = "1";
       }
       else{
         anchor.parentElement!.style.animation = "none";
+        anchor.style.cssText = "";
       }
     })
   }
@@ -50,7 +52,9 @@ function SideMenu(){
 function AboutMe(){
   return(
     <section id="about-me" className="portfolio-section-general">
-
+      <div id="olo">
+      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+      </div>
     </section>
   );
 }
