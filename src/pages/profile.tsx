@@ -60,9 +60,15 @@ function AboutMe(){
 }
 
 function Projects(){
+
+  const projects: string[] = ["GameStar(GameSun)", "OnePieceUniverse", "WAR! (Card Game)"]
   return(
     <section id="projects" className="portfolio-section-general">
-
+        {projects.map((project: string) =>
+            <div>
+              
+            </div>
+        )}
     </section>
   );
 }
