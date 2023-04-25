@@ -1,26 +1,14 @@
-import React, {useEffect} from 'react';
+import React, {MouseEventHandler, useEffect} from 'react';
 import '../css/profile.css';
 import $ from 'jquery';
 
-function SideMenu(){
-  function fillBorderOnClick(e : React.MouseEvent){
-    const anchors : HTMLAnchorElement[] = 
-            Array.from(document.getElementsByClassName("side-menu-anchors") as HTMLCollectionOf<HTMLAnchorElement>);
+interface GeneralProps {
+  fillBorderOnClick: MouseEventHandler,
+}
 
-    anchors.forEach((anchor: HTMLAnchorElement) =>{
-      if(e.currentTarget.getAttribute("href") === anchor.getAttribute("href")){
-        anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
-        anchor.style.opacity = "1";
-      }
-      else{
-        anchor.parentElement!.style.animation = "none";
-        anchor.style.cssText = "";
-      }
-    })
-  }
-
+function SideMenu({fillBorderOnClick} : GeneralProps){
   useEffect(()=>{
-    $("#side-menu li a").on("click", (e)=>{
+    $(".side-menu-anchors").on("click", (e)=>{
       e.preventDefault();
       const href: string | null = e.currentTarget.getAttribute("href");
   
@@ -49,11 +37,31 @@ function SideMenu(){
   );
 }
 
-function AboutMe(){
+function AboutMe({fillBorderOnClick} : GeneralProps){
+  const tools: {name: string, image: string}[] = [{name: "C#",image: ""}, {name: "JavaScript",image: ""},
+  {name: "React",image: ""}, {name: "EJS",image: ""}, {name: "Nodejs",image: ""}];
+
   return(
     <section id="about-me" className="portfolio-section-general">
       <div id="olo">
-      <p>Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu libero sit amet quam egestas semper. Aenean ultricies mi vitae est. Mauris placerat eleifend leo.</p>
+        <div>
+          <h2 id="name">Marvin Altidor</h2>
+          <h1 id="what-am-i">Web Developer</h1>
+          <div>links</div>
+        </div>
+        <p>I'm a Full Stack developper and I bring ideas to life.</p>
+        <p>Tools used to make this happen:</p>
+        <div>
+          <ul>
+            {tools.map((tool: {name: string, image: string}, index: number) =>
+            <li key={index}>
+              <img alt="tool" src={tool.image} />
+              <span>{tool.name}</span>
+            </li>
+            )}
+          </ul>
+          <a href="#projects" className="side-menu-anchors" onClick={fillBorderOnClick}>PROJECTS</a>
+        </div>
       </div>
     </section>
   );
@@ -64,8 +72,8 @@ function Projects(){
   const projects: string[] = ["GameStar(GameSun)", "OnePieceUniverse", "WAR! (Card Game)"]
   return(
     <section id="projects" className="portfolio-section-general">
-        {projects.map((project: string) =>
-            <div>
+        {projects.map((project: string, index: number) =>
+            <div key={index}>
               
             </div>
         )}
@@ -82,10 +90,27 @@ function ContactMe(){
 }
 
 export default function Profile(){
+  // General Functions
+  function fillBorderOnClick(e : React.MouseEvent){
+    const anchors : HTMLAnchorElement[] = 
+            Array.from(document.getElementsByClassName("side-menu-anchors") as HTMLCollectionOf<HTMLAnchorElement>);
+
+    anchors.forEach((anchor: HTMLAnchorElement) =>{
+      if(e.currentTarget.getAttribute("href") === anchor.getAttribute("href")){
+        anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
+        anchor.style.opacity = "1";
+      }
+      else{
+        anchor.parentElement!.style.animation = "none";
+        anchor.style.cssText = "";
+      }
+    })
+  }
+
   return(
     <div id="profile-page">
-      <SideMenu />
-      <AboutMe />
+      <SideMenu fillBorderOnClick={fillBorderOnClick}/>
+      <AboutMe fillBorderOnClick={fillBorderOnClick}/>
       <Projects />
       <ContactMe />
     </div>
