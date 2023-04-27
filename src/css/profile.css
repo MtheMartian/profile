@@ -135,6 +135,15 @@ body{
   width: 30%;
 }
 
+/* ----- Skills ----- */
+#skills{
+  background: rgb(18, 10, 54);
+  background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../assets/stars.png);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
 #tools-wrapper{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
@@ -181,6 +190,6 @@ body{
 /* ----- Contact Me ----- */
 #contact-me{
   background: linear-gradient(rgb(36, 25, 87), rgb(49, 37, 80), rgb(115, 103, 145));
-  background-image: linear-gradient(rgba(36, 25, 87, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
+  background-image: linear-gradient(rgba(39, 28, 94, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
                     url(../assets/stars.png);
 }

@@ -34,6 +34,9 @@ function SideMenu({fillBorderOnClick} : GeneralProps){
           <a href="#about-me" className="side-menu-anchors" onClick={fillBorderOnClick}>WELCOME</a>
         </li>
         <li>
+          <a href="#skills" className="side-menu-anchors" onClick={fillBorderOnClick}>SKILLS</a>
+        </li>
+        <li>
           <a href="#projects" className="side-menu-anchors" onClick={fillBorderOnClick}>PROJECTS</a>
         </li>
         <li>
@@ -45,9 +48,6 @@ function SideMenu({fillBorderOnClick} : GeneralProps){
 }
 
 function AboutMe({fillBorderOnClick} : GeneralProps){
-  const tools: {name: string, image: string}[] = [{name: "C#",image: CSharp}, {name: "JavaScript",image: JavaScript},
-  {name: "React",image: ReactJS}, {name: "EJS",image: ""}, {name: "NodeJS",image: Node}];
-
   const links : string[] = [GitHub, LinkedIn, Twitter];
 
   const [displayLinks, setDisplayLinks] = useState<boolean>(false);
@@ -78,28 +78,50 @@ function AboutMe({fillBorderOnClick} : GeneralProps){
         </div>
         <p>I'm a Full Stack developper and I bring ideas to life.</p>
         <p>Tools used to make this happen:</p>
-        <ul id="tools-wrapper">
-          {tools.map((tool: {name: string, image: string}, index: number) =>
-          <li key={index} className="tool">
-            <img alt="tool" src={tool.image} className="tool-img"/>
-            <span className="tool-tooltip">{tool.name}</span>
-          </li>
-          )}
-        </ul>
           <a href="#projects" className="side-menu-anchors" onClick={fillBorderOnClick}>PROJECTS</a>
       </div>
     </section>
   );
 }
 
+function Skills(){
+  const tools: {name: string, image: string}[] = [{name: "C#",image: CSharp}, {name: "JavaScript",image: JavaScript},
+  {name: "React",image: ReactJS}, {name: "EJS",image: ""}, {name: "NodeJS",image: Node}];
+
+  return(
+    <section id="skills" className="portfolio-section-general">
+      <span id="skills-title">Skills</span>
+      <ul id="tools-wrapper">
+        {tools.map((tool: {name: string, image: string}, index: number) =>
+        <li key={index} className="tool">
+          <img alt="tool" src={tool.image} className="tool-img"/>
+          <span className="tool-tooltip">{tool.name}</span>
+        </li>
+        )}
+      </ul>
+    </section>
+  );
+}
+
 function Projects(){
 
-  const projects: string[] = ["GameStar(GameSun)", "OnePieceUniverse", "WAR! (Card Game)"]
+  const projects: {name: string, desc: string, link: string, ss: string}[] = [
+    {name: "GameSun", desc: "Search for upcoming or recent games", link: "", ss: ""},
+    {name: "One Piece Realm", desc: "Create, search and learn more about the One Piece universe!", link: "https://oprealm.herokuapp.com/", ss: ""},
+    {name: "War!", desc: "Classic card game where both players draw a card until no cards are left, player with the most cards wins!", link: "https://mthemartian.github.io/short-war/", ss: ""},
+    {name: "APOD NASA", desc: "View daily pictures from space taken by NASA with a description of the phenomenon.", link: "https://mthemartian.github.io/apod-space/", ss: ""}];
   return(
     <section id="projects" className="portfolio-section-general">
-        {projects.map((project: string, index: number) =>
+        {projects.map((project: {name: string, desc: string, link: string, ss: string}, index: number) =>
             <div key={index}>
-              
+              <div>
+                <img src={project.ss} alt="Project" />
+                <span>{project.name}</span>
+                <button><a href={project.link}>Live</a></button>
+              </div>
+              <div>
+                <p>{project.desc}</p>
+              </div>
             </div>
         )}
     </section>
@@ -136,6 +158,7 @@ export default function Profile(){
     <div id="profile-page">
       <SideMenu fillBorderOnClick={fillBorderOnClick}/>
       <AboutMe fillBorderOnClick={fillBorderOnClick}/>
+      <Skills />
       <Projects />
       <ContactMe />
     </div>
