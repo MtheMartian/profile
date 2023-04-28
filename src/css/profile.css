@@ -11,6 +11,24 @@ body{
   font-family: Nunito, sans-serif;
 }
 
+#links-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  background: white;
+  padding: 5px;
+  border-radius: 10px;
+  position: fixed;
+  top: 5px;
+  right: 5px;
+  z-index: 2;
+}
+
+.link-img{
+  width: 32px;
+}
+
 /* ----- Side Menu ----- */
 #side-menu-wrapper{
   position: fixed;
@@ -73,20 +91,19 @@ body{
 /* ----- Sections (General) ----- */
 .portfolio-section-general{
   width: 100%;
-  min-height: 100rem;
+  min-height: 50rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
 }
 
 /* ----- About Me -----*/
 #about-me{
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(18, 10, 54));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../assets/stars.png);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../assets/stars.png); 
 }
 
 #olo{
@@ -97,6 +114,7 @@ body{
   flex-direction: column;
   align-items: flex-start;
   justify-content: center;
+  position: relative;
 }
 
 #title-name-links{
@@ -111,28 +129,26 @@ body{
 
 #what-am-i{
   font-weight: 1000;
-  font-size: calc(1vw + 2rem);
+  font-size: calc(1vw + 4rem);
   letter-spacing: 2px;
-  background-image: linear-gradient(45deg, rgb(253, 8, 8), rgb(255, 255, 255));
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
 }
 
-#links-wrapper{
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background: white;
-  padding: 5px;
-  border-radius: 10px;
-  width: 10rem;
+#about-me-paragraph{
+  font-weight: 500;
+  font-size: calc(1vw + 1rem);
+  letter-spacing: 1px;
+}
+
+#work-button{
   position: absolute;
-  top: -20px;
-  right: 0;
-}
-
-.link-img{
-  width: 30%;
+  bottom: -6rem;
+  left: 0;
+  border: 1px solid white;
+  border-radius: 25px;
+  padding: 10px 20px 10px 20px;
+  font-weight: 700;
+  font-size: calc(1vw + 1rem);
+  letter-spacing: 1px;
 }
 
 /* ----- Skills ----- */
@@ -140,26 +156,41 @@ body{
   background: rgb(18, 10, 54);
   background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../assets/stars.png);
   color: white;
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
+
 #tools-wrapper{
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(8rem, 1fr));
   place-items: start;
   width: 70%;
+  margin-top: 20%;
+  position: relative;
+}
+
+#skills-title{
+  position: absolute;
+  top: -5rem;
+  left: 0;
+  font-weight: 800;
+  font-size: calc(1vw + 1rem);
 }
 
 .tool{
   position: relative;
-  border: 2px solid white;
+  border: 3px solid yellow;
   border-radius: 10px;
   width: 120px;
   height: 120px;
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-bottom: 10px;
+  transition: 150ms transform;
+  background: white;
+}
+
+.tool:hover{
+  transform: scale(1.05);
 }
 
 .tool-img{
@@ -169,12 +200,16 @@ body{
 .tool-tooltip{
   opacity: 0;
   position: absolute;
-  bottom: 0;
-  right: 0;
+  bottom: 2px;
+  left: 32px;
   transition: 500ms opacity;
-  width: 20px;
-  background: rgba(0, 0, 0, 0.6);
-
+  background: rgba(255, 255, 0, 0.8);
+  font-weight: 700;
+  font-size: calc(0.5vw + 0.5rem);
+  padding: 5px;
+  border-radius: 10px;
+  color: black;
+  z-index: 1;
 }
 
 .tool:hover .tool-tooltip{
@@ -185,6 +220,33 @@ body{
 #projects{
  background: rgb(25, 18, 59);
  background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../assets/stars.png);
+ color: white;
+}
+
+#projects-wrapper{
+  border: 1px solid white;
+  width: 70%;
+  margin-top: 20%;
+  height: 30rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow-x: hidden;
+}
+
+.project-container{
+  min-width: 100%;
+  border: 1px solid red;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.project-image-container, .project-description{
+  width: 50%;
+  border: 1px solid green;
+  height: 100%;
 }
 
 /* ----- Contact Me ----- */
