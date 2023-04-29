@@ -177,7 +177,7 @@ body{
 
 .tool{
   position: relative;
-  border: 3px solid yellow;
+  border: 3px solid gold;
   border-radius: 10px;
   width: 120px;
   height: 120px;
@@ -224,29 +224,45 @@ body{
 }
 
 #projects-wrapper{
-  border: 1px solid white;
   width: 70%;
   margin-top: 20%;
-  height: 30rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   overflow-x: hidden;
 }
 
 .project-container{
-  min-width: 100%;
-  border: 1px solid red;
-  height: 100%;
+  background: white;
+  border-radius: 20px;
+  color: black;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
 }
 
-.project-image-container, .project-description{
-  width: 50%;
-  border: 1px solid green;
+.project-image-container{
   height: 100%;
+  display: flex;
+}
+
+.project-image-container{
+  width: 60%;
+}
+
+.project-image-container img{
+  width: 100%;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.project-description{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 /* ----- Contact Me ----- */

@@ -11,6 +11,9 @@ import HTML from '../assets/tool-logo/html5-with-wordmark-color.svg';
 import CSS from '../assets/tool-logo/css-3-seeklogo.com.svg';
 import $ from 'jquery';
 
+import OpRealm from '../assets/projects-images/oprealm.jpg';
+import War from '../assets/projects-images/war.jpg';
+
 interface GeneralProps {
   fillBorderOnClick: MouseEventHandler,
 }
@@ -90,7 +93,7 @@ function Skills(){
 function Projects(){
 
   const projects: {name: string, desc: string, link: string, github: string, ss: string}[] = [
-    {name: "GameSun", desc: "Search for upcoming or recent games", link: "", github: "https://github.com/MtheMartian/gamestar", ss: ""},
+    {name: "GameSun", desc: "Search for upcoming or recent games", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
     {name: "One Piece Realm", desc: "Create, search and learn more about the One Piece universe!", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: ""},
     {name: "War!", desc: "Classic card game where both players draw a card until no cards are left, player with the most cards wins!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: ""},
     {name: "APOD NASA", desc: "View daily pictures from space taken by NASA with a description of the phenomenon.", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: ""}];
@@ -101,12 +104,14 @@ function Projects(){
           <div key={index} className="project-container">
             <div className='project-image-container'>
               <img src={project.ss} alt="Project" />
-              <span>{project.name}</span>
-              <button><a href={project.link}>Live</a></button>
-              <button><a href={project.github}>Code</a></button>
             </div>
             <div className="project-description">
+              <h1>{project.name}</h1>
               <p>{project.desc}</p>
+              <div>
+                <button><a href={project.link}>Live</a></button>
+                <button><a href={project.github}>Code</a></button>
+              </div>
             </div>
           </div>
         )}
