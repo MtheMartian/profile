@@ -128,6 +128,7 @@ body{
 }
 
 #what-am-i{
+  color: goldenrod;
   font-weight: 1000;
   font-size: calc(1vw + 4rem);
   letter-spacing: 2px;
@@ -143,7 +144,7 @@ body{
   position: absolute;
   bottom: -6rem;
   left: 0;
-  border: 1px solid white;
+  border: 2px solid gold;
   border-radius: 25px;
   padding: 10px 20px 10px 20px;
   font-weight: 700;
@@ -223,24 +224,35 @@ body{
  color: white;
 }
 
-#projects-wrapper{
+#project-pages-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  overflow: hidden;
   width: 70%;
-  margin-top: 20%;
+  margin-top: 10%;
+}
+
+.project-pages{
+  min-width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   overflow-x: hidden;
+  gap: 20px;
 }
 
 .project-container{
-  background: white;
-  border-radius: 20px;
-  color: black;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.project-container:hover .project-description{
+  width: 20%;
+  left: 60%;
 }
 
 .project-image-container{
@@ -250,12 +262,14 @@ body{
 
 .project-image-container{
   width: 60%;
+  z-index: 1;
 }
 
 .project-image-container img{
   width: 100%;
-  border-top-left-radius: 20px;
+  border: 5px solid rgba(218, 165, 32, 1);
   border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
 }
 
 .project-description{
@@ -263,6 +277,16 @@ body{
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 10%;
+  width: 0;
+  background: goldenrod;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  color: black;
+  transition: 300ms width, 1000ms left;
 }
 
 /* ----- Contact Me ----- */

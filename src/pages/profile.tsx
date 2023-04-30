@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect} from 'react';
+import React, {MouseEventHandler, useEffect, useState} from 'react';
 import '../css/profile.css';
 import Twitter from '../assets/twitter-blue.png';
 import GitHub from '../assets/github-dark-64px.png';
@@ -91,30 +91,74 @@ function Skills(){
 }
 
 function Projects(){
+  const [projectPages, setProjectPages] = useState<JSX.Element[]>([<div>Loading...</div>]);
 
   const projects: {name: string, desc: string, link: string, github: string, ss: string}[] = [
     {name: "GameSun", desc: "Search for upcoming or recent games", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
-    {name: "One Piece Realm", desc: "Create, search and learn more about the One Piece universe!", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: ""},
-    {name: "War!", desc: "Classic card game where both players draw a card until no cards are left, player with the most cards wins!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: ""},
-    {name: "APOD NASA", desc: "View daily pictures from space taken by NASA with a description of the phenomenon.", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: ""}];
-  return(
-    <section id="projects" className="portfolio-section-general">
-      <div id="projects-wrapper">
-        {projects.map((project: {name: string, desc: string, link: string, github: string, ss: string}, index: number) =>
-          <div key={index} className="project-container">
+    {name: "One Piece Realm", desc: "Create, search and learn more about the One Piece universe!", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
+    {name: "War!", desc: "Classic card game where both players draw a card until no cards are left, player with the most cards wins!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
+    {name: "APOD NASA", desc: "View daily pictures from space taken by NASA with a description of the phenomenon.", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
+  
+  useEffect(() =>{
+    function CreateProjectPages(): JSX.Element[]{
+      let numOfPages: number = Math.floor(projects.length / 3);
+      if(projects.length % 3 !== 0){
+        numOfPages = numOfPages + 1;
+      }
+
+      let tempIndex: number = 1;
+      let increment: number = 0;
+
+      let pages: JSX.Element[] = [<div></div>];
+      let allProjects: JSX.Element[] = [<div></div>];
+
+      for(let i: number = 0; i < projects.length; i++){
+        allProjects.push(
+          <div className="project-container" key={"project" + i}>
             <div className='project-image-container'>
-              <img src={project.ss} alt="Project" />
+              <img src={projects[i].ss} alt="Project" />
             </div>
             <div className="project-description">
-              <h1>{project.name}</h1>
-              <p>{project.desc}</p>
+              <h1>{projects[i].name}</h1>
               <div>
-                <button><a href={project.link}>Live</a></button>
-                <button><a href={project.github}>Code</a></button>
+                <button><a href={projects[i].link}>Live</a></button>
+                <button><a href={projects[i].github}>Code</a></button>
               </div>
             </div>
           </div>
-        )}
+        )
+      }
+
+      for(let i: number = 1; i <= numOfPages; i++){
+        pages.push(
+        <div id={"project-page-" + i} className="project-pages" key={"page" + i}>
+            {(function(): JSX.Element[]{
+              let currentProjects: JSX.Element[] = [];
+              for(let j: number = tempIndex; j < allProjects.length; j++){
+                if(increment === 3){
+                  tempIndex = tempIndex + increment;
+                  increment = 0;
+                  break;
+                }
+                currentProjects.push(allProjects[j]);
+                increment++;
+              }
+              return currentProjects;
+            })()}
+        </div>
+        );
+      }
+
+      return pages;
+    }
+
+    setProjectPages(prev => prev = CreateProjectPages());
+  }, []);
+
+  return(
+    <section id="projects" className="portfolio-section-general">
+      <div id="project-pages-wrapper">
+        {projectPages}
       </div>
     </section>
   );
