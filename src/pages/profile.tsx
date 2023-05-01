@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect, useState} from 'react';
+import React, {MouseEventHandler, useEffect, useState, useRef} from 'react';
 import '../css/profile.css';
 import Twitter from '../assets/twitter-blue.png';
 import GitHub from '../assets/github-dark-64px.png';
@@ -20,7 +20,7 @@ interface GeneralProps {
 
 function SideMenu({fillBorderOnClick} : GeneralProps){
   useEffect(()=>{
-    $(".side-menu-anchors").on("click", (e)=>{
+    $(".anchors").on("click", (e)=>{
       e.preventDefault();
       const href: string | null = e.currentTarget.getAttribute("href");
   
@@ -36,23 +36,23 @@ function SideMenu({fillBorderOnClick} : GeneralProps){
     <nav id="side-menu-wrapper">
       <ul id="side-menu">
         <li>
-          <a href="#about-me" className="side-menu-anchors" onClick={fillBorderOnClick}>WELCOME</a>
+          <a href="#about-me" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>WELCOME</a>
         </li>
         <li>
-          <a href="#skills" className="side-menu-anchors" onClick={fillBorderOnClick}>SKILLS</a>
+          <a href="#skills" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>SKILLS</a>
         </li>
         <li>
-          <a href="#projects" className="side-menu-anchors" onClick={fillBorderOnClick}>PROJECTS</a>
+          <a href="#projects" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>PROJECTS</a>
         </li>
         <li>
-          <a href="#contact-me" className="side-menu-anchors" onClick={fillBorderOnClick}>GET IN TOUCH</a>
+          <a href="#contact-me" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>GET IN TOUCH</a>
         </li>
       </ul>
     </nav>
   );
 }
 
-function AboutMe({fillBorderOnClick} : GeneralProps){
+function AboutMe(){
   return(
     <section id="about-me" className="portfolio-section-general">
       <div id="olo">
@@ -64,7 +64,7 @@ function AboutMe({fillBorderOnClick} : GeneralProps){
         </div>
         <p id="about-me-paragraph">I'm a Full Stack developer and I bring ideas to life.</p>
         <button id="work-button">
-          <a href="#projects" className="side-menu-anchors" onClick={fillBorderOnClick}>View Work</a>
+          <a href="#projects" className="anchors">View Work</a>
         </button>
       </div>
     </section>
@@ -78,7 +78,7 @@ function Skills(){
   return(
     <section id="skills" className="portfolio-section-general">
       <ul id="tools-wrapper">
-        <h2 id="skills-title">Skills</h2>
+        <h2 id="skills-title" className="section-titles">Skills</h2>
         {tools.map((tool: {name: string, image: string}, index: number) =>
         <li key={index} className="tool">
           <img alt="tool" src={tool.image} className="tool-img"/>
@@ -92,19 +92,30 @@ function Skills(){
 
 function Projects(){
   const [projectPages, setProjectPages] = useState<JSX.Element[]>([<div>Loading...</div>]);
+  const pageAnchors = useRef<number | null>(null);
+  const pageCounter = useRef<number | null>(null);
 
-  const projects: {name: string, desc: string, link: string, github: string, ss: string}[] = [
-    {name: "GameSun", desc: "Search for upcoming or recent games", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
-    {name: "One Piece Realm", desc: "Create, search and learn more about the One Piece universe!", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
-    {name: "War!", desc: "Classic card game where both players draw a card until no cards are left, player with the most cards wins!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
-    {name: "APOD NASA", desc: "View daily pictures from space taken by NASA with a description of the phenomenon.", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
-  
+  const leftButton = useRef<HTMLButtonElement | null>(null);
+  const rightButton = useRef<HTMLButtonElement | null>(null);
+
   useEffect(() =>{
+    const projects: {name: string, link: string, github: string, ss: string}[] = [
+      {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
+      {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
+      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
+      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
+    
+    pageAnchors.current = 1;
+
+    leftButton.current!.classList.add("hidden");
+
     function CreateProjectPages(): JSX.Element[]{
       let numOfPages: number = Math.floor(projects.length / 3);
       if(projects.length % 3 !== 0){
         numOfPages = numOfPages + 1;
       }
+
+      pageCounter.current = numOfPages;
 
       let tempIndex: number = 1;
       let increment: number = 0;
@@ -135,7 +146,7 @@ function Projects(){
             {(function(): JSX.Element[]{
               let currentProjects: JSX.Element[] = [];
               for(let j: number = tempIndex; j < allProjects.length; j++){
-                if(increment === 3){
+                if(increment === 2){
                   tempIndex = tempIndex + increment;
                   increment = 0;
                   break;
@@ -155,10 +166,60 @@ function Projects(){
     setProjectPages(prev => prev = CreateProjectPages());
   }, []);
 
+  useEffect(() =>{
+    $(".project-page-buttons").on('click', (e: any) =>{
+      e.preventDefault();
+      const buttons: Element = e.currentTarget;
+      let previous: string | null = "";
+      let next: string | null = "";
+  
+      if(buttons.id.includes("left")){
+        if(pageCounter.current! > 1){
+          pageAnchors.current!--;
+          previous = "#project-page-" + pageAnchors.current;
+          $("#project-pages-wrapper").animate({scrollLeft: $(previous).offset()?.left}, 800);
+  
+        }
+      }
+      else if(buttons.id.includes("right")){
+        if(pageAnchors.current! < pageCounter.current!){
+          pageAnchors.current!++;
+          next = "#project-page-" + pageAnchors.current;
+          $("#project-pages-wrapper").animate({scrollLeft: $(next).offset()?.top}, 800);
+        }
+      }
+  
+      if(pageAnchors.current! <= 1){
+        leftButton.current?.classList.add("hidden");
+      }
+      else{
+        leftButton.current?.classList.remove("hidden");
+      }
+    
+      if(pageCounter.current === 1 || pageAnchors.current === pageCounter.current){
+        rightButton.current?.classList.add("hidden");
+      }
+      else{
+        rightButton.current?.classList.remove("hidden");
+      }
+    })
+
+    return ()=>{
+      $(".project-page-buttons").off();
+    }
+  }, []) 
+
   return(
     <section id="projects" className="portfolio-section-general">
+      <h2 id="projects-title">Projects</h2>
+      <button id="project-page-left" className="project-page-buttons" 
+        ref={leftButton}>
+      </button>
+      <button id="project-page-right" className="project-page-buttons" 
+         ref={rightButton}>
+      </button>
       <div id="project-pages-wrapper">
-        {projectPages}
+        {projectPages} 
       </div>
     </section>
   );
@@ -204,7 +265,7 @@ export default function Profile(){
         )}
       </div>
       <SideMenu fillBorderOnClick={fillBorderOnClick}/>
-      <AboutMe fillBorderOnClick={fillBorderOnClick}/>
+      <AboutMe />
       <Skills />
       <Projects />
       <ContactMe />

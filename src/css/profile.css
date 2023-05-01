@@ -29,6 +29,15 @@ body{
   width: 32px;
 }
 
+.section-titles{
+  position: absolute;
+  top: -5rem;
+  left: 0;
+  font-weight: 800;
+  font-size: calc(1vw + 1rem);
+  color: white;
+}
+
 /* ----- Side Menu ----- */
 #side-menu-wrapper{
   position: fixed;
@@ -168,14 +177,6 @@ body{
   position: relative;
 }
 
-#skills-title{
-  position: absolute;
-  top: -5rem;
-  left: 0;
-  font-weight: 800;
-  font-size: calc(1vw + 1rem);
-}
-
 .tool{
   position: relative;
   border: 3px solid gold;
@@ -222,15 +223,25 @@ body{
  background: rgb(25, 18, 59);
  background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../assets/stars.png);
  color: white;
+ position: relative;
 }
 
 #project-pages-wrapper{
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  overflow: hidden;
   width: 70%;
   margin-top: 10%;
+  position: relative;
+  overflow: hidden;
+}
+
+#projects-title{
+  position: absolute;
+  left: calc(30% - 15rem);
+  top: 10%;
+  font-weight: 800;
+  font-size: calc(1vw + 1rem);
 }
 
 .project-pages{
@@ -240,7 +251,7 @@ body{
   align-items: center;
   justify-content: flex-start;
   overflow-x: hidden;
-  gap: 20px;
+  gap: 25px;
 }
 
 .project-container{
@@ -253,6 +264,13 @@ body{
 .project-container:hover .project-description{
   width: 20%;
   left: 60%;
+}
+
+.project-container:hover .project-image-container img{
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
 }
 
 .project-image-container{
@@ -268,8 +286,8 @@ body{
 .project-image-container img{
   width: 100%;
   border: 5px solid rgba(218, 165, 32, 1);
-  border-bottom-left-radius: 20px;
-  border-top-left-radius: 20px;
+  border-radius: 20px;
+  transition: all 300ms ease-out;
 }
 
 .project-description{
@@ -286,7 +304,18 @@ body{
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
   color: black;
-  transition: 300ms width, 1000ms left;
+  transition: 300ms width, 1000ms left ease-out;
+}
+
+.project-page-buttons{
+  border: 2px solid gold;
+  height: 2rem;
+  width: 2rem;
+  background: gold;
+}
+
+#project-page-left{
+  clip-path: polygon(50% 0, 20% 20%, 50% 100%, 0 50%);
 }
 
 /* ----- Contact Me ----- */
@@ -294,4 +323,9 @@ body{
   background: linear-gradient(rgb(36, 25, 87), rgb(49, 37, 80), rgb(115, 103, 145));
   background-image: linear-gradient(rgba(39, 28, 94, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
                     url(../assets/stars.png);
+}
+
+/* ----- Cool Stuff ----- */
+.hidden{
+  display: none;
 }
