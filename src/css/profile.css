@@ -100,7 +100,7 @@ body{
 /* ----- Sections (General) ----- */
 .portfolio-section-general{
   width: 100%;
-  min-height: 50rem;
+  min-height: 60rem;
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -226,12 +226,17 @@ body{
  position: relative;
 }
 
+#project-pages-wrapper-style{
+  width: 70%;
+  margin-top: 10%;
+  position: relative;
+}
+
 #project-pages-wrapper{
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  width: 70%;
-  margin-top: 10%;
+  width: 100%;
   position: relative;
   overflow: hidden;
 }
@@ -308,14 +313,61 @@ body{
 }
 
 .project-page-buttons{
-  border: 2px solid gold;
   height: 2rem;
   width: 2rem;
   background: gold;
+  border-radius: 7px;
+}
+
+#project-page-left-wrapper, #project-page-right-wrapper{
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  z-index: 3;
+  padding: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255, 255, 255, 0);
+  transition: 150ms background;
+}
+
+#project-page-left-wrapper:hover, #project-page-right-wrapper:hover{
+  background: rgba(255, 255, 255, 0.1);
+}
+
+#project-page-left-wrapper{
+  left: -5.5rem;
+  animation: moveLeft 4.5s infinite ease-in;
+}
+
+#project-page-right-wrapper{
+  right: -5.5rem;
+  animation: moveRight 4.5s infinite ease-in;
+}
+
+@keyframes moveRight{
+  0% {right: -5.5rem;}
+  25% {right: -6.5rem;}
+  50% {right: -5rem;}
+  75% {right: -6.5rem;}
+  100% {right: -5.5rem;}
+}
+
+@keyframes moveLeft{
+  0% {left: -5.5rem;}
+  25% {left: -6.5rem;}
+  50% {left: -5rem;}
+  75% {left: -6.5rem;}
+  100% {left: -5.5rem;}
 }
 
 #project-page-left{
-  clip-path: polygon(50% 0, 20% 20%, 50% 100%, 0 50%);
+  clip-path: polygon(100% 0, 100% 100%, 0 50%);
+}
+
+#project-page-right{
+  clip-path: polygon(100% 50%, 0 0, 0 100%);
 }
 
 /* ----- Contact Me ----- */
@@ -325,7 +377,14 @@ body{
                     url(../assets/stars.png);
 }
 
+#contact-me-form{
+  width: 100%;
+  min-height: 60rem;
+  border: 1px solid blue;
+  color: white;
+}
+
 /* ----- Cool Stuff ----- */
 .hidden{
-  display: none;
+  display: none !important;
 }

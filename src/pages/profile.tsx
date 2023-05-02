@@ -95,8 +95,8 @@ function Projects(){
   const pageAnchors = useRef<number | null>(null);
   const pageCounter = useRef<number | null>(null);
 
-  const leftButton = useRef<HTMLButtonElement | null>(null);
-  const rightButton = useRef<HTMLButtonElement | null>(null);
+  const leftButton = useRef<HTMLDivElement | null>(null);
+  const rightButton = useRef<HTMLDivElement | null>(null);
 
   useEffect(() =>{
     const projects: {name: string, link: string, github: string, ss: string}[] = [
@@ -167,7 +167,7 @@ function Projects(){
   }, []);
 
   useEffect(() =>{
-    $(".project-page-buttons").on('click', (e: any) =>{
+    $(".project-page-buttons-wrapper").on('click', (e: any) =>{
       e.preventDefault();
       const buttons: Element = e.currentTarget;
       let previous: string | null = "";
@@ -178,7 +178,6 @@ function Projects(){
           pageAnchors.current!--;
           previous = "#project-page-" + pageAnchors.current;
           $("#project-pages-wrapper").animate({scrollLeft: $(previous).offset()?.left}, 800);
-  
         }
       }
       else if(buttons.id.includes("right")){
@@ -205,21 +204,25 @@ function Projects(){
     })
 
     return ()=>{
-      $(".project-page-buttons").off();
+      $(".project-page-buttons-wrapper").off();
     }
   }, []) 
 
   return(
     <section id="projects" className="portfolio-section-general">
       <h2 id="projects-title">Projects</h2>
-      <button id="project-page-left" className="project-page-buttons" 
-        ref={leftButton}>
-      </button>
-      <button id="project-page-right" className="project-page-buttons" 
-         ref={rightButton}>
-      </button>
-      <div id="project-pages-wrapper">
-        {projectPages} 
+      <div id="project-pages-wrapper-style">
+        <div id="project-page-left-wrapper" className="project-page-buttons-wrapper" ref={leftButton}>
+          <button id="project-page-left" className="project-page-buttons">
+          </button>
+        </div>
+        <div id="project-page-right-wrapper" className="project-page-buttons-wrapper" ref={rightButton}>
+          <button id="project-page-right" className="project-page-buttons">
+          </button>
+        </div>
+        <div id="project-pages-wrapper">
+          {projectPages} 
+        </div>
       </div>
     </section>
   );
@@ -228,7 +231,14 @@ function Projects(){
 function ContactMe(){
   return(
     <section id="contact-me" className="portfolio-section-general">
-
+      <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
+        <div>
+          <input type="text" name="name"></input>
+          <input type="text" name="email"></input>
+        </div>
+        <textarea form="conatct-me-form" name="message"></textarea>
+        <input type="submite" value="Send"></input>
+      </form>
     </section>
   );
 }
