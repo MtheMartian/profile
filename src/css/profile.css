@@ -38,6 +38,25 @@ body{
   color: white;
 }
 
+.buttons{
+  border: 2px solid gold;
+  border-radius: 25px;
+  padding: 10px 20px 10px 20px;
+  font-weight: 700;
+  font-size: calc(1vw + 1rem);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 150ms transform;
+}
+
+.buttons:hover{
+  transform: scale(1.03);
+}
+
+.buttons:active{
+  transform: scale(1.07);
+}
+
 /* ----- Side Menu ----- */
 #side-menu-wrapper{
   position: fixed;
@@ -153,12 +172,6 @@ body{
   position: absolute;
   bottom: -6rem;
   left: 0;
-  border: 2px solid gold;
-  border-radius: 25px;
-  padding: 10px 20px 10px 20px;
-  font-weight: 700;
-  font-size: calc(1vw + 1rem);
-  letter-spacing: 1px;
 }
 
 /* ----- Skills ----- */
@@ -375,12 +388,58 @@ body{
   background: linear-gradient(rgb(36, 25, 87), rgb(49, 37, 80), rgb(115, 103, 145));
   background-image: linear-gradient(rgba(39, 28, 94, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
                     url(../assets/stars.png);
+  align-items: center;
 }
 
 #contact-me-form{
-  width: 100%;
-  min-height: 60rem;
-  border: 1px solid blue;
+  width: 80%;
+  height: 50rem;
+  border: 2px solid gold;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  border-radius: 10px;
+  background: rgba(255,255, 255, 0.1);
+  position: relative;
+}
+
+#contact-me-form label{
+  font-size: calc(1vw + 0.5rem);
+  font-weight: 700;
+}
+
+.contact-inputs{
+  padding: 5px;
+  background: rgba(255, 255, 255, 0.5);
+  color: azure;
+  border-radius: 5px;
+}
+
+#contact-name-email-wrapper{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.contact-labels{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+#contact-title{
+  border-bottom: 4px solid goldenrod;
+  position: absolute;
+  top: 3.5rem;
+}
+
+#contact-title h1{
+  font-weight: 800;
+  font-size: calc(1.5vw + 3rem);
   color: white;
 }
 

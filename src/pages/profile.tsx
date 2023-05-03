@@ -63,7 +63,7 @@ function AboutMe(){
           <h1 id="what-am-i">Web Developer</h1>
         </div>
         <p id="about-me-paragraph">I'm a Full Stack developer and I bring ideas to life.</p>
-        <button id="work-button">
+        <button id="work-button" className="buttons">
           <a href="#projects" className="anchors">View Work</a>
         </button>
       </div>
@@ -232,12 +232,24 @@ function ContactMe(){
   return(
     <section id="contact-me" className="portfolio-section-general">
       <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
-        <div>
-          <input type="text" name="name"></input>
-          <input type="text" name="email"></input>
+        <div id="contact-title">
+          <h1>Get in touch</h1>
         </div>
-        <textarea form="conatct-me-form" name="message"></textarea>
-        <input type="submite" value="Send"></input>
+        <div id="contact-name-email-wrapper">
+          <div className="contact-labels">
+            <label htmlFor="contact-name">Name</label>
+            <input type="text" name="name" className="contact-inputs" id="contact-name" />
+          </div>
+          <div className="contact-labels">
+            <label htmlFor="contact-email">Email</label>
+            <input type="text" name="email" className="contact-inputs" id="contact-email" />
+          </div>
+        </div>
+        <div className="contact-labels">
+          <label htmlFor="contact-message">Message</label>
+          <textarea form="conatct-me-form" name="message" className="contact-inputs" id="contact-message"></textarea>
+        </div>
+        <input type="submit" value="Send Message" className="buttons"></input>
       </form>
     </section>
   );
