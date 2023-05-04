@@ -406,6 +406,27 @@ body{
   position: relative;
 }
 
+#contact-inputs-section{
+  margin-top: 12rem;
+  width: 100%;
+  height: calc(100% - 12rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  position: relative;
+}
+
+.contact-inputs-wrappers{
+  position: relative;
+  width: 30%;
+}
+
+.contact-inputs-wrappers label{
+  position: absolute;
+  top: -3rem;
+}
+
 #contact-me-form label{
   font-size: calc(1vw + 0.5rem);
   font-weight: 700;
@@ -414,21 +435,54 @@ body{
 .contact-inputs{
   padding: 5px;
   background: rgba(255, 255, 255, 0.5);
-  color: azure;
+  color: black;
+  font-size: calc(0.5vw + 0.5rem);
+  font-weight: 600;
+  letter-spacing: 1px;
   border-radius: 5px;
 }
 
 #contact-name-email-wrapper{
+  width: 100%;
+  height: 15rem;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 3rem;
 }
 
-.contact-labels{
+#contact-name-email-wrapper input{
+  width: 100%;
+  height: 3.5rem;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+#contact-message-wrapper{
+  width: 100%;
+  height: 15rem;
   display: flex;
-  flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
+}
+
+#contact-message-wrapper textarea{
+  width: 100%;
+  height: 15rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px;
+  overflow: hidden;
+}
+
+#contact-message-wrapper div{
+  width: 50%;
+}
+
+#contact-submit{
+  position: absolute;
+  bottom: 1.5rem;
 }
 
 #contact-title{

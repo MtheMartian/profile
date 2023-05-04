@@ -235,27 +235,40 @@ function ContactMe(){
         <div id="contact-title">
           <h1>Get in touch</h1>
         </div>
-        <div id="contact-name-email-wrapper">
-          <div className="contact-labels">
-            <label htmlFor="contact-name">Name</label>
-            <input type="text" name="name" className="contact-inputs" id="contact-name" />
+        <div id="contact-inputs-section">
+          <div id="contact-name-email-wrapper">
+            <div className="contact-inputs-wrappers">
+              <label htmlFor="contact-name">Name</label>
+              <input type="text" name="name" className="contact-inputs" id="contact-name" />
+            </div>
+            <div className="contact-inputs-wrappers">
+              <label htmlFor="contact-email">Email</label>
+              <input type="text" name="email" className="contact-inputs" id="contact-email" />
+            </div>
           </div>
-          <div className="contact-labels">
-            <label htmlFor="contact-email">Email</label>
-            <input type="text" name="email" className="contact-inputs" id="contact-email" />
+          <div id="contact-message-wrapper">
+            <div className="contact-inputs-wrappers">
+              <label htmlFor="contact-message">Message</label>
+              <textarea form="conatct-me-form" name="message" className="contact-inputs" id="contact-message"></textarea>
+            </div>
           </div>
         </div>
-        <div className="contact-labels">
-          <label htmlFor="contact-message">Message</label>
-          <textarea form="conatct-me-form" name="message" className="contact-inputs" id="contact-message"></textarea>
-        </div>
-        <input type="submit" value="Send Message" className="buttons"></input>
+        <input type="submit" value="Send Message" className="buttons" id="contact-submit"></input>
       </form>
     </section>
   );
 }
 
 export default function Profile(){
+  // Observer 
+  let options: {root: Element | null, rootMargin: string, threshold: number} = {
+    root: document.querySelector("#profile-page"),
+    rootMargin: "0px",
+    threshold: 0.3,
+  }
+
+  let observer : IntersectionObserver = new IntersectionObserver(() =>{console.log("poop")}, options);
+
   // Links variable
   const links : {linkImage: string, link: string}[] = [{linkImage: GitHub, link: "https://github.com/MtheMartian"},
   {linkImage: LinkedIn, link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage: Twitter, link: "https://twitter.com/MtheMartian_"}];
@@ -276,6 +289,7 @@ export default function Profile(){
       }
     })
   }
+
 
   return(
     <div id="profile-page">
