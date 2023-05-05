@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useEffect, useState, useRef} from 'react';
+import React, {useEffect, useState, useRef} from 'react';
 import '../css/profile.css';
 import Twitter from '../assets/twitter-blue.png';
 import GitHub from '../assets/github-dark-64px.png';
@@ -14,11 +14,7 @@ import $ from 'jquery';
 import OpRealm from '../assets/projects-images/oprealm.jpg';
 import War from '../assets/projects-images/war.jpg';
 
-interface GeneralProps {
-  fillBorderOnClick: MouseEventHandler,
-}
-
-function SideMenu({fillBorderOnClick} : GeneralProps){
+function SideMenu(){
   useEffect(()=>{
     $(".anchors").on("click", (e)=>{
       e.preventDefault();
@@ -36,16 +32,16 @@ function SideMenu({fillBorderOnClick} : GeneralProps){
     <nav id="side-menu-wrapper">
       <ul id="side-menu">
         <li>
-          <a href="#about-me" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>WELCOME</a>
+          <a href="#about-me" className="side-menu-anchors anchors">WELCOME</a>
         </li>
         <li>
-          <a href="#skills" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>SKILLS</a>
+          <a href="#skills" className="side-menu-anchors anchors">SKILLS</a>
         </li>
         <li>
-          <a href="#projects" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>PROJECTS</a>
+          <a href="#projects" className="side-menu-anchors anchors">PROJECTS</a>
         </li>
         <li>
-          <a href="#contact-me" className="side-menu-anchors anchors" onClick={fillBorderOnClick}>GET IN TOUCH</a>
+          <a href="#contact-me" className="side-menu-anchors anchors">GET IN TOUCH</a>
         </li>
       </ul>
     </nav>
@@ -260,36 +256,46 @@ function ContactMe(){
 }
 
 export default function Profile(){
-  // Observer 
-  let options: {root: Element | null, rootMargin: string, threshold: number} = {
-    root: document.querySelector("#profile-page"),
-    rootMargin: "0px",
-    threshold: 0.3,
-  }
-
-  let observer : IntersectionObserver = new IntersectionObserver(() =>{console.log("poop")}, options);
-
   // Links variable
   const links : {linkImage: string, link: string}[] = [{linkImage: GitHub, link: "https://github.com/MtheMartian"},
   {linkImage: LinkedIn, link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage: Twitter, link: "https://twitter.com/MtheMartian_"}];
 
-  // General Functions
-  function fillBorderOnClick(e : React.MouseEvent){
+  // Observer Functions
+  function fillBorderOnScroll(entries: IntersectionObserverEntry[]){
     const anchors : HTMLAnchorElement[] = 
             Array.from(document.getElementsByClassName("side-menu-anchors") as HTMLCollectionOf<HTMLAnchorElement>);
-
-    anchors.forEach((anchor: HTMLAnchorElement) =>{
-      if(e.currentTarget.getAttribute("href") === anchor.getAttribute("href")){
-        anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
-        anchor.style.opacity = "1";
-      }
-      else{
-        anchor.parentElement!.style.animation = "none";
-        anchor.style.cssText = "";
-      }
-    })
+  
+    entries.forEach((entry: IntersectionObserverEntry) =>{
+        if(entry.isIntersecting){
+          anchors.forEach((anchor: HTMLAnchorElement) =>{
+            if("#" + entry.target.id === anchor.getAttribute("href")){
+              console.log(entry.target.id);
+              anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
+              anchor.style.opacity = "1";
+            }
+            else{
+              anchor.parentElement!.style.animation = "none";
+              anchor.style.cssText = "";
+            }
+          })
+        }
+    });
   }
 
+  useEffect(()=>{
+    let observer : IntersectionObserver = new IntersectionObserver(fillBorderOnScroll, {threshold: 0.5});
+
+    const pageSections: HTMLElement[] = Array.from(document.querySelectorAll("section"));
+
+    pageSections.forEach(element =>{
+      observer.observe(element);
+    });
+
+
+    return() =>{
+      observer.disconnect();
+    }
+  })
 
   return(
     <div id="profile-page">
@@ -300,7 +306,7 @@ export default function Profile(){
           </a>
         )}
       </div>
-      <SideMenu fillBorderOnClick={fillBorderOnClick}/>
+      <SideMenu />
       <AboutMe />
       <Skills />
       <Projects />

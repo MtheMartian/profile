@@ -64,7 +64,9 @@ body{
   top: 0;
   bottom: 0;
   width: 20rem;
-  background: linear-gradient(rgb(1, 37, 12), rgb(1, 37, 3), rgb(14, 138, 55));
+  background: linear-gradient(45deg, rgb(48, 44, 11), rgba(0, 0, 0, 0.95));
+  box-shadow: 2px 2px 5px rgb(241, 235, 178);
+  z-index: 4;
   display: flex;
   align-items: center;
   justify-content: center;
