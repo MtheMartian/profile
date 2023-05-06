@@ -87,7 +87,7 @@ function Skills(){
 }
 
 function Projects(){
-  const [projectPages, setProjectPages] = useState<JSX.Element[]>([<div>Loading...</div>]);
+  const [projectPages, setProjectPages] = useState<JSX.Element[] | JSX.Element>(<div>Loading...</div>);
   const pageAnchors = useRef<number | null>(null);
   const pageCounter = useRef<number | null>(null);
 
@@ -99,6 +99,7 @@ function Projects(){
       {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
       {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
       {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
+      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm},
       {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
     
     pageAnchors.current = 1;
@@ -106,8 +107,8 @@ function Projects(){
     leftButton.current!.classList.add("hidden");
 
     function CreateProjectPages(): JSX.Element[]{
-      let numOfPages: number = Math.floor(projects.length / 3);
-      if(projects.length % 3 !== 0){
+      let numOfPages: number = Math.floor(projects.length / 2);
+      if(projects.length % 2 !== 0){
         numOfPages = numOfPages + 1;
       }
 
@@ -160,6 +161,10 @@ function Projects(){
     }
 
     setProjectPages(prev => prev = CreateProjectPages());
+
+    return ()=>{
+      setProjectPages(prev => prev = <div>Loading...</div>);
+    }
   }, []);
 
   useEffect(() =>{

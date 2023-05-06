@@ -272,6 +272,7 @@ body{
   justify-content: flex-start;
   overflow-x: hidden;
   gap: 25px;
+  border: 1px solid red;
 }
 
 .project-container{
