@@ -264,6 +264,10 @@ body{
   font-size: calc(1vw + 1rem);
 }
 
+#projects-title span{
+  font-size: calc(0.5vw + 0.5rem);
+}
+
 .project-pages{
   min-width: 100%;
   display: flex;
@@ -272,7 +276,6 @@ body{
   justify-content: flex-start;
   overflow-x: hidden;
   gap: 25px;
-  border: 1px solid red;
 }
 
 .project-container{

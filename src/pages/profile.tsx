@@ -99,7 +99,6 @@ function Projects(){
       {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
       {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
       {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
-      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm},
       {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
     
     pageAnchors.current = 1;
@@ -123,6 +122,7 @@ function Projects(){
       for(let i: number = 0; i < projects.length; i++){
         allProjects.push(
           <div className="project-container" key={"project" + i}>
+            <div>{i + 1}</div>
             <div className='project-image-container'>
               <img src={projects[i].ss} alt="Project" />
             </div>
@@ -178,14 +178,14 @@ function Projects(){
         if(pageCounter.current! > 1){
           pageAnchors.current!--;
           previous = "#project-page-" + pageAnchors.current;
-          $("#project-pages-wrapper").animate({scrollLeft: $(previous).offset()?.left}, 800);
+          $("#project-pages-wrapper").animate({scrollLeft: "-=" + $(previous).outerWidth()}, 800);
         }
       }
       else if(buttons.id.includes("right")){
         if(pageAnchors.current! < pageCounter.current!){
           pageAnchors.current!++;
           next = "#project-page-" + pageAnchors.current;
-          $("#project-pages-wrapper").animate({scrollLeft: $(next).offset()?.top}, 800);
+          $("#project-pages-wrapper").animate({scrollLeft: "+=" + $(next).outerWidth()}, 800);
         }
       }
   
@@ -211,7 +211,7 @@ function Projects(){
 
   return(
     <section id="projects" className="portfolio-section-general">
-      <h2 id="projects-title">Projects</h2>
+      <h2 id="projects-title">Projects <span>&#40;most recent to least&#41;</span></h2>
       <div id="project-pages-wrapper-style">
         <div id="project-page-left-wrapper" className="project-page-buttons-wrapper" ref={leftButton}>
           <button id="project-page-left" className="project-page-buttons">
