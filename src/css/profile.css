@@ -1,6 +1,7 @@
 body{
   overflow-x: hidden;
   overflow-y: scroll;
+  background: black;
 }
 
 /* ----- Profile Page ----- */
@@ -9,6 +10,7 @@ body{
   height: 100vh;
   margin-left: 20rem;
   font-family: Nunito, sans-serif;
+  transition: 300ms width;
 }
 
 #links-wrapper{
@@ -57,6 +59,16 @@ body{
   transform: scale(1.07);
 }
 
+@media only screen and (max-width: 1200px){
+  #profile-page{
+    width: 100vw;
+    margin-left: 0;
+  }
+
+  h1{
+    font-size: calc(1vw + 2.5rem) !important;
+  }
+}
 /* ----- Side Menu ----- */
 #side-menu-wrapper{
   position: fixed;
@@ -70,6 +82,7 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 300ms width;
 }
 
 #side-menu{
@@ -116,6 +129,13 @@ body{
   50% {border-image: linear-gradient(45deg, rgba(65, 65, 65, 0.4), rgba(255, 255, 255, 0.6)) 1;}
   75% {border-image: linear-gradient(45deg, rgba(65, 65, 65, 0.2), rgba(255, 255, 255, 0.4)) 1;}
   100% {border-image: linear-gradient(45deg, rgba(65, 65, 65, 0.8), rgba(255, 255, 255, 1)) 1;}
+}
+
+@media only screen and (max-width: 1200px){
+  #side-menu-wrapper{
+    width: 0;
+    display: none;
+  }
 }
 
 /* ----- Sections (General) ----- */
@@ -241,9 +261,14 @@ body{
  position: relative;
 }
 
-#project-pages-wrapper-style{
+#projects-wrapper{
+  position: relative;
   width: 70%;
   margin-top: 10%;
+}
+
+#project-pages-wrapper-style{
+  width: 100%;
   position: relative;
 }
 
@@ -254,14 +279,6 @@ body{
   width: 100%;
   position: relative;
   overflow: hidden;
-}
-
-#projects-title{
-  position: absolute;
-  left: calc(30% - 15rem);
-  top: 10%;
-  font-weight: 800;
-  font-size: calc(1vw + 1rem);
 }
 
 #projects-title span{
@@ -329,6 +346,40 @@ body{
   border-top-right-radius: 20px;
   color: black;
   transition: 300ms width, 1000ms left ease-out;
+}
+
+.project-description h1{
+  font-size: calc(0.5vw + 0.5rem);
+  font-weight: 800;
+}
+
+.project-buttons{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  margin-top: 10px;
+}
+
+.project-buttons button{
+  font-weight: 700;
+  border: 2px solid silver;
+  border-radius: 12.5px;
+  padding: 5px 10px 5px 10px;
+  font-size: calc(0.3vw + 0.3rem);
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 150ms transform;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.project-buttons button:hover{
+  transform: scale(1.05);
+}
+
+.project-buttons button:active{
+  transform: scale(1.1);
 }
 
 .project-page-buttons{
@@ -478,8 +529,8 @@ body{
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10px;
-  overflow: hidden;
+  padding: 20px;
+  word-break: break-all; 
 }
 
 #contact-message-wrapper div{
@@ -499,7 +550,7 @@ body{
 
 #contact-title h1{
   font-weight: 800;
-  font-size: calc(1.5vw + 3rem);
+  font-size: calc(1vw + 4rem);
   color: white;
 }
 

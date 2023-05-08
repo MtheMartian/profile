@@ -15,19 +15,6 @@ import OpRealm from '../assets/projects-images/oprealm.jpg';
 import War from '../assets/projects-images/war.jpg';
 
 function SideMenu(){
-  useEffect(()=>{
-    $(".anchors").on("click", (e)=>{
-      e.preventDefault();
-      const href: string | null = e.currentTarget.getAttribute("href");
-  
-      $("html, body").animate({scrollTop: $(href!).offset()?.top}, 500);
-    });
-
-    return () =>{
-      $("#side-menu li a").off();
-    }
-  }, []);
-
   return(
     <nav id="side-menu-wrapper">
       <ul id="side-menu">
@@ -122,15 +109,14 @@ function Projects(){
       for(let i: number = 0; i < projects.length; i++){
         allProjects.push(
           <div className="project-container" key={"project" + i}>
-            <div>{i + 1}</div>
             <div className='project-image-container'>
               <img src={projects[i].ss} alt="Project" />
             </div>
             <div className="project-description">
               <h1>{projects[i].name}</h1>
-              <div>
-                <button><a href={projects[i].link}>Live</a></button>
-                <button><a href={projects[i].github}>Code</a></button>
+              <div className="project-buttons">
+                <button><a href={projects[i].link} target="_blank" rel="noreferrer noopener">Live</a></button>
+                <button><a href={projects[i].github} target="_blank" rel="noreferrer noopener">Code</a></button>
               </div>
             </div>
           </div>
@@ -211,18 +197,20 @@ function Projects(){
 
   return(
     <section id="projects" className="portfolio-section-general">
-      <h2 id="projects-title">Projects <span>&#40;most recent to least&#41;</span></h2>
-      <div id="project-pages-wrapper-style">
-        <div id="project-page-left-wrapper" className="project-page-buttons-wrapper" ref={leftButton}>
-          <button id="project-page-left" className="project-page-buttons">
-          </button>
-        </div>
-        <div id="project-page-right-wrapper" className="project-page-buttons-wrapper" ref={rightButton}>
-          <button id="project-page-right" className="project-page-buttons">
-          </button>
-        </div>
-        <div id="project-pages-wrapper">
-          {projectPages} 
+      <div id="projects-wrapper">
+        <h2 id="projects-title" className="section-titles">Projects <span>&#40;most recent to least&#41;</span></h2>
+        <div id="project-pages-wrapper-style">
+          <div id="project-page-left-wrapper" className="project-page-buttons-wrapper" ref={leftButton}>
+            <button id="project-page-left" className="project-page-buttons">
+            </button>
+          </div>
+          <div id="project-page-right-wrapper" className="project-page-buttons-wrapper" ref={rightButton}>
+            <button id="project-page-right" className="project-page-buttons">
+            </button>
+          </div>
+          <div id="project-pages-wrapper">
+            {projectPages} 
+          </div>
         </div>
       </div>
     </section>
@@ -300,7 +288,20 @@ export default function Profile(){
     return() =>{
       observer.disconnect();
     }
-  })
+  });
+
+  useEffect(()=>{
+    $(".anchors").on("click", (e)=>{
+      e.preventDefault();
+      const href: string | null = e.currentTarget.getAttribute("href");
+  
+      $("body, html").animate({scrollTop: $(href!).offset()?.top}, 500);
+    });
+
+    return () =>{
+      $(".anchors").off();
+    }
+  }, []);
 
   return(
     <div id="profile-page">
