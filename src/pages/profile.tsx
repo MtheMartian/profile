@@ -13,6 +13,7 @@ import $ from 'jquery';
 
 import OpRealm from '../assets/projects-images/oprealm.jpg';
 import War from '../assets/projects-images/war.jpg';
+import Nasa from '../assets/projects-images/nasa-apod.jpg';
 
 function SideMenu(){
   return(
@@ -85,8 +86,8 @@ function Projects(){
     const projects: {name: string, link: string, github: string, ss: string}[] = [
       {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
       {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
-      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: OpRealm},
-      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: OpRealm}];
+      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: War},
+      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: Nasa}];
     
     pageAnchors.current = 1;
 
@@ -113,7 +114,7 @@ function Projects(){
               <img src={projects[i].ss} alt="Project" />
             </div>
             <div className="project-description">
-              <h1>{projects[i].name}</h1>
+              <h2>{projects[i].name}</h2>
               <div className="project-buttons">
                 <button><a href={projects[i].link} target="_blank" rel="noreferrer noopener">Live</a></button>
                 <button><a href={projects[i].github} target="_blank" rel="noreferrer noopener">Code</a></button>

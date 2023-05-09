@@ -348,7 +348,7 @@ body{
   transition: 300ms width, 1000ms left ease-out;
 }
 
-.project-description h1{
+.project-description h2{
   font-size: calc(0.5vw + 0.5rem);
   font-weight: 800;
 }
@@ -438,6 +438,12 @@ body{
 
 #project-page-right{
   clip-path: polygon(100% 50%, 0 0, 0 100%);
+}
+
+@media only screen and (max-width: 1200px){
+  #project-page-left-wrapper, #project-page-right-wrapper{
+    transform: scale(0.4);
+  }
 }
 
 /* ----- Contact Me ----- */
