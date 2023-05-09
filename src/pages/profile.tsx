@@ -14,6 +14,7 @@ import $ from 'jquery';
 import OpRealm from '../assets/projects-images/oprealm.jpg';
 import War from '../assets/projects-images/war.jpg';
 import Nasa from '../assets/projects-images/nasa-apod.jpg';
+import GameSun from '../assets/projects-images/gamesun.jpg';
 
 function SideMenu(){
   return(
@@ -84,7 +85,7 @@ function Projects(){
 
   useEffect(() =>{
     const projects: {name: string, link: string, github: string, ss: string}[] = [
-      {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: OpRealm},
+      {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: GameSun},
       {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
       {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: War},
       {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: Nasa}];
