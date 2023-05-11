@@ -253,6 +253,12 @@ body{
   opacity: 1;
 }
 
+@media only screen and (max-width: 1200px){
+  #tools-wrapper{
+    transform: scale(0.7);
+  }
+}
+
 /* ----- Projects ----- */
 #projects{
  background: rgb(25, 18, 59);
@@ -558,6 +564,13 @@ body{
   font-weight: 800;
   font-size: calc(1vw + 4rem);
   color: white;
+}
+
+@media only screen and (max-width: 1200px){
+  #contact-me-form{
+    transform: scale(0.7);
+    width: 100%;
+  }
 }
 
 /* ----- Cool Stuff ----- */
