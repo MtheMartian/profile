@@ -3,12 +3,13 @@ import '../css/profile.css';
 import Twitter from '../assets/twitter-blue.png';
 import GitHub from '../assets/github-dark-64px.png';
 import LinkedIn from '../assets/lin.png';
-import CSharp from '../assets/tool-logo/c-sharp-c-seeklogo.com.svg';
-import JavaScript from '../assets/tool-logo/javascript-js-seeklogo.com.svg';
-import Node from '../assets/tool-logo/nodejs-seeklogo.com.svg';
-import ReactJS from '../assets/tool-logo/react-seeklogo.com.svg';
-import HTML from '../assets/tool-logo/html5-with-wordmark-color.svg';
-import CSS from '../assets/tool-logo/css-3-seeklogo.com.svg';
+import Mail from '../assets/mail-48px.png';
+import CSharp from '../assets/tool-logo/c-sharp.svg';
+import JavaScript from '../assets/tool-logo/js.svg';
+import Node from '../assets/tool-logo/nodejs.svg';
+import ReactJS from '../assets/tool-logo/react.svg';
+import HTML from '../assets/tool-logo/html5.svg';
+import CSS from '../assets/tool-logo/css3.svg';
 import $ from 'jquery';
 
 import OpRealm from '../assets/projects-images/oprealm.jpg';
@@ -220,41 +221,37 @@ function Projects(){
 }
 
 function ContactMe(){
+   // Links variable
+   const links : {linkImage: string, link: string}[] = [{linkImage: GitHub, link: "https://github.com/MtheMartian"},
+   {linkImage: LinkedIn, link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage: Twitter, link: "https://twitter.com/MtheMartian_"}];
+
   return(
     <section id="contact-me" className="portfolio-section-general">
-      <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
+      <div id="contact-me-wrapper">
         <div id="contact-title">
-          <h1>Get in touch</h1>
+            <h1>Get in touch</h1>
         </div>
-        <div id="contact-inputs-section">
-          <div id="contact-name-email-wrapper">
-            <div className="contact-inputs-wrappers">
-              <label htmlFor="contact-name">Name</label>
-              <input type="text" name="name" className="contact-inputs" id="contact-name" />
-            </div>
-            <div className="contact-inputs-wrappers">
-              <label htmlFor="contact-email">Email</label>
-              <input type="text" name="email" className="contact-inputs" id="contact-email" />
-            </div>
-          </div>
-          <div id="contact-message-wrapper">
-            <div className="contact-inputs-wrappers">
-              <label htmlFor="contact-message">Message</label>
-              <textarea form="conatct-me-form" name="message" className="contact-inputs" id="contact-message"></textarea>
-            </div>
-          </div>
+        <div>
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
-        <input type="submit" value="Send Message" className="buttons" id="contact-submit"></input>
-      </form>
+        <div id="links-wrapper">
+          {links.map((link: {linkImage: string, link: string}, index: number) => 
+            <a key={index} href={link.link} target="_blank" rel="noreferrer noopener" className="link-anchor">
+              <img alt="link" src={link.linkImage} className="link-img"/>
+            </a>
+          )}
+          <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
+            <button type="submit" value="Send Message" id="contact-submit" className="link-anchor">
+              <img src={Mail} className="link-img"/>
+            </button>
+          </form>
+        </div>
+      </div>
     </section>
   );
 }
 
 export default function Profile(){
-  // Links variable
-  const links : {linkImage: string, link: string}[] = [{linkImage: GitHub, link: "https://github.com/MtheMartian"},
-  {linkImage: LinkedIn, link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage: Twitter, link: "https://twitter.com/MtheMartian_"}];
-
   // Observer Functions
   function fillBorderOnScroll(entries: IntersectionObserverEntry[]){
     const anchors : HTMLAnchorElement[] = 
@@ -307,13 +304,6 @@ export default function Profile(){
 
   return(
     <div id="profile-page">
-      <div id="links-wrapper">
-        {links.map((link: {linkImage: string, link: string}, index: number) => 
-          <a key={index} href={link.link} target="_blank" rel="noreferrer noopener" className="link-anchor">
-            <img alt="link" src={link.linkImage} className="link-img"/>
-          </a>
-        )}
-      </div>
       <SideMenu />
       <AboutMe />
       <Skills />
