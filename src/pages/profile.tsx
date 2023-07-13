@@ -1,5 +1,4 @@
 import React, {useEffect, useState, useRef} from 'react';
-import '../css/profile.css';
 import $ from 'jquery';
 
 function SideMenu(){
@@ -72,10 +71,10 @@ function Projects(){
 
   useEffect(() =>{
     const projects: {name: string, link: string, github: string, ss: string}[] = [
-      {name: "GameAstral", link: "https://gameastral-057014ee9b02.herokuapp.com/", github: "https://github.com/MtheMartian/gamestar", ss: "/main/asset/projects-images/gamesun.jpg"},
-      {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: "/main/asset/projects-images/oprealm.jpg"},
-      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: "/main/asset/projects-images/war.jpg"},
-      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: "/main/asset/projects-images/nasa-apod.jpg"}];
+      {name: "GameAstral", link: "https://gameastral-057014ee9b02.herokuapp.com/", github: "https://github.com/MtheMartian/gamestar", ss: "/main/assets/projects-images/gamesun.jpg"},
+      {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: "/main/assets/projects-images/oprealm.jpg"},
+      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: "/main/assets/projects-images/war.jpg"},
+      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: "/main/assets/projects-images/nasa-apod.jpg"}];
     
     pageAnchors.current = 1;
 
@@ -223,11 +222,9 @@ function ContactMe(){
               <img alt="link" src={link.linkImage} className="link-img"/>
             </a>
           )}
-          <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
-            <button type="submit" value="Send Message" id="contact-submit" className="link-anchor">
-              <img src= "/main/assets/mail-48px.png" className="link-img"/>
-            </button>
-          </form>
+          <a id="contact-submit" className="link-anchor" href="mailto:marvin.altidor@outlook.com">
+            <img src= "/main/assets/mail-48px.png" className="link-img"/>
+          </a>
         </div>
       </div>
     </section>

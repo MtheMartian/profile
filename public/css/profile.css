@@ -4,7 +4,7 @@ body{
   background: black;
 }
 
-button{
+button, a{
   cursor: pointer !important;
 }
 
@@ -139,7 +139,7 @@ button{
 /* ----- About Me -----*/
 #about-me{
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(18, 10, 54));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../../public/assets/stars.png); 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../assets/stars.png); 
 }
 
 #olo{
@@ -185,7 +185,7 @@ button{
 /* ----- Skills ----- */
 #skills{
   background: rgb(18, 10, 54);
-  background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../../public/assets/stars.png);
+  background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../assets/stars.png);
   color: white;
 }
 
@@ -248,7 +248,7 @@ button{
 /* ----- Projects ----- */
 #projects{
  background: rgb(25, 18, 59);
- background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../../public/assets/stars.png);
+ background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../assets/stars.png);
  color: white;
  position: relative;
 }
@@ -424,7 +424,7 @@ button{
 #contact-me{
   background: linear-gradient(rgb(36, 25, 87), rgb(49, 37, 80), rgb(115, 103, 145));
   background-image: linear-gradient(rgba(39, 28, 94, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
-                    url(../../public/assets/stars.png);
+                    url(../assets/stars.png);
   align-items: center;
 }
 
