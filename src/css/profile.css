@@ -5,7 +5,7 @@ body{
 }
 
 button{
-  cursor: pointer;
+  cursor: pointer !important;
 }
 
 /* ----- Profile Page ----- */
@@ -139,7 +139,7 @@ button{
 /* ----- About Me -----*/
 #about-me{
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgb(18, 10, 54));
-  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../assets/stars.png); 
+  background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(18, 10, 54, 0.2)), url(../../public/assets/stars.png); 
 }
 
 #olo{
@@ -185,7 +185,7 @@ button{
 /* ----- Skills ----- */
 #skills{
   background: rgb(18, 10, 54);
-  background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../assets/stars.png);
+  background-image: linear-gradient(rgba(18, 10, 54, 0.2), rgba(23, 16, 59, 0.2)), url(../../public/assets/stars.png);
   color: white;
 }
 
@@ -248,7 +248,7 @@ button{
 /* ----- Projects ----- */
 #projects{
  background: rgb(25, 18, 59);
- background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../assets/stars.png);
+ background-image: linear-gradient(rgba(25, 18, 59, 0.2), rgba(39, 28, 94, 0.2)), url(../../public/assets/stars.png);
  color: white;
  position: relative;
 }
@@ -256,7 +256,7 @@ button{
 #projects-wrapper{
   position: relative;
   width: 70%;
-  margin-top: 10%;
+  margin-top: 7%;
 }
 
 #project-pages-wrapper-style{
@@ -297,6 +297,8 @@ button{
 .project-container:hover .project-description{
   width: 20%;
   left: 60%;
+  opacity: 1;
+  z-index: 2;
 }
 
 .project-container:hover .project-image-container img{
@@ -334,7 +336,8 @@ button{
   border-bottom-right-radius: 20px;
   border-top-right-radius: 20px;
   color: black;
-  transition: 300ms width, 1000ms left ease-out;
+  transition: 300ms opacity, 300ms width, 1000ms left ease-out;
+  opacity: 0;
 }
 
 .project-description h2{
@@ -358,7 +361,6 @@ button{
   padding: 5px 10px 5px 10px;
   font-size: calc(0.3vw + 0.3rem);
   letter-spacing: 1px;
-  cursor: pointer;
   transition: 150ms transform;
   background: rgba(255, 255, 255, 0.7);
 }
@@ -404,22 +406,6 @@ button{
   
 }
 
-@keyframes moveRight{
-  0% {right: -5.5rem;}
-  25% {right: -6.5rem;}
-  50% {right: -5rem;}
-  75% {right: -6.5rem;}
-  100% {right: -5.5rem;}
-}
-
-@keyframes moveLeft{
-  0% {left: -5.5rem;}
-  25% {left: -6.5rem;}
-  50% {left: -5rem;}
-  75% {left: -6.5rem;}
-  100% {left: -5.5rem;}
-}
-
 #project-page-left{
   clip-path: polygon(100% 0, 100% 100%, 0 50%);
 }
@@ -438,20 +424,18 @@ button{
 #contact-me{
   background: linear-gradient(rgb(36, 25, 87), rgb(49, 37, 80), rgb(115, 103, 145));
   background-image: linear-gradient(rgba(39, 28, 94, 0.2), rgba(49, 37, 80, 0.2), rgba(115, 103, 145, 0.2)), 
-                    url(../assets/stars.png);
+                    url(../../public/assets/stars.png);
   align-items: center;
 }
 
 #contact-me-wrapper{
   width: 80%;
-  height: 50rem;
+  height: 0;
   border: 2px solid gold;
   color: white;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
   border-radius: 10px;
   background: rgba(255,255, 255, 0.1);
   position: relative;
@@ -461,9 +445,11 @@ button{
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  background: white;
+  background: transparent;
   padding: 5px;
+  position: absolute;
+  bottom: 0;
+  gap: 20px;
   width: 100%;
 }
 
@@ -472,22 +458,14 @@ button{
 }
 
 #contact-title{
-  border-bottom: 4px solid goldenrod;
   position: absolute;
-  top: 3.5rem;
+  top: 0rem;
 }
 
 #contact-title h1{
   font-weight: 800;
   font-size: calc(1vw + 4rem);
   color: white;
-}
-
-@media only screen and (max-width: 1200px){
-  #contact-me-form{
-    transform: scale(0.7);
-    width: 100%;
-  }
 }
 
 /* ----- Cool Stuff ----- */

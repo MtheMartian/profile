@@ -1,21 +1,6 @@
 import React, {useEffect, useState, useRef} from 'react';
 import '../css/profile.css';
-import Twitter from '../assets/twitter-blue.png';
-import GitHub from '../assets/github-dark-64px.png';
-import LinkedIn from '../assets/lin.png';
-import Mail from '../assets/mail-48px.png';
-import CSharp from '../assets/tool-logo/c-sharp.svg';
-import JavaScript from '../assets/tool-logo/js.svg';
-import Node from '../assets/tool-logo/nodejs.svg';
-import ReactJS from '../assets/tool-logo/react.svg';
-import HTML from '../assets/tool-logo/html5.svg';
-import CSS from '../assets/tool-logo/css3.svg';
 import $ from 'jquery';
-
-import OpRealm from '../assets/projects-images/oprealm.jpg';
-import War from '../assets/projects-images/war.jpg';
-import Nasa from '../assets/projects-images/nasa-apod.jpg';
-import GameSun from '../assets/projects-images/gamesun.jpg';
 
 function SideMenu(){
   return(
@@ -58,8 +43,9 @@ function AboutMe(){
 }
 
 function Skills(){
-  const tools: {name: string, image: string}[] = [{name: "C#",image: CSharp}, {name: "JavaScript",image: JavaScript},
-  {name: "React",image: ReactJS}, {name: "HTML",image: HTML}, {name: "CSS",image: CSS}, {name: "NodeJS",image: Node}];
+  const tools: {name: string, image: string}[] = [{name: "C#",image: "/main/assets/tool-logo/c-sharp.svg"}, {name: "JavaScript",image: "/main/assets/tool-logo/js.svg"},
+  {name: "React",image: "/main/assets/tool-logo/react.svg"}, {name: "HTML",image: "/main/assets/tool-logo/html5.svg"}, {name: "CSS",image: "/main/assets/tool-logo/css3.svg"}, {name: "NodeJS",image: "/main/assets/tool-logo/nodejs.svg"},
+  {name: "MongoDB", image: "/main/assets/tool-logo/mongodb.svg"}, {name: "Docker", image: "/main/assets/tool-logo/docker.svg"}, {name: "TypeScript", image: "/main/assets/tool-logo/typescript.svg"}];
 
   return(
     <section id="skills" className="portfolio-section-general">
@@ -86,10 +72,10 @@ function Projects(){
 
   useEffect(() =>{
     const projects: {name: string, link: string, github: string, ss: string}[] = [
-      {name: "GameSun", link: "", github: "https://github.com/MtheMartian/gamestar", ss: GameSun},
-      {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: OpRealm},
-      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: War},
-      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: Nasa}];
+      {name: "GameAstral", link: "https://gameastral-057014ee9b02.herokuapp.com/", github: "https://github.com/MtheMartian/gamestar", ss: "/main/asset/projects-images/gamesun.jpg"},
+      {name: "One Piece Realm", link: "https://oprealm.herokuapp.com/", github: "https://github.com/MtheMartian/onepieceuniverse", ss: "/main/asset/projects-images/oprealm.jpg"},
+      {name: "War!", link: "https://mthemartian.github.io/short-war/", github:"https://github.com/MtheMartian/short-war", ss: "/main/asset/projects-images/war.jpg"},
+      {name: "APOD NASA", link: "https://mthemartian.github.io/apod-space/", github:"https://github.com/MtheMartian/apod-space", ss: "/main/asset/projects-images/nasa-apod.jpg"}];
     
     pageAnchors.current = 1;
 
@@ -201,7 +187,7 @@ function Projects(){
   return(
     <section id="projects" className="portfolio-section-general">
       <div id="projects-wrapper">
-        <h2 id="projects-title" className="section-titles">Projects <span>&#40;most recent to least&#41;</span></h2>
+        <h2 id="projects-title" className="section-titles">Projects</h2>
         <div id="project-pages-wrapper-style">
           <div id="project-page-left-wrapper" className="project-page-buttons-wrapper" ref={leftButton}>
             <button id="project-page-left" className="project-page-buttons">
@@ -222,17 +208,14 @@ function Projects(){
 
 function ContactMe(){
    // Links variable
-   const links : {linkImage: string, link: string}[] = [{linkImage: GitHub, link: "https://github.com/MtheMartian"},
-   {linkImage: LinkedIn, link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage: Twitter, link: "https://twitter.com/MtheMartian_"}];
+   const links : {linkImage: string, link: string}[] = [{linkImage:  "/main/assets/github-light-64px.png", link: "https://github.com/MtheMartian"},
+   {linkImage: "/main/assets/lin.png", link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}, {linkImage:  "/main/assets/twitter-blue.png", link: "https://twitter.com/MtheMartian_"}];
 
   return(
     <section id="contact-me" className="portfolio-section-general">
       <div id="contact-me-wrapper">
         <div id="contact-title">
             <h1>Get in touch</h1>
-        </div>
-        <div>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
         </div>
         <div id="links-wrapper">
           {links.map((link: {linkImage: string, link: string}, index: number) => 
@@ -242,7 +225,7 @@ function ContactMe(){
           )}
           <form id="contact-me-form" action="mailto:marvin.altidor@outlook.com" method="post" encType='text/plain'>
             <button type="submit" value="Send Message" id="contact-submit" className="link-anchor">
-              <img src={Mail} className="link-img"/>
+              <img src= "/main/assets/mail-48px.png" className="link-img"/>
             </button>
           </form>
         </div>
@@ -261,7 +244,6 @@ export default function Profile(){
         if(entry.isIntersecting){
           anchors.forEach((anchor: HTMLAnchorElement) =>{
             if("#" + entry.target.id === anchor.getAttribute("href")){
-              console.log(entry.target.id);
               anchor.parentElement!.style.animation = "fillborder 3s infinite ease-in";
               anchor.style.opacity = "1";
             }
