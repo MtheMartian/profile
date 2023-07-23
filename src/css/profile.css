@@ -1,0 +1,114 @@
+button{
+  cursor: pointer;
+}
+
+body{
+  overflow-x: hidden;
+  background: rgb(29, 29, 29);
+}
+
+#portfolio{
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  font-family: Nunito, Arial;
+}
+
+.sections{
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: calc(0.5vw + 0.5rem);
+  position: relative;
+}
+
+.section-title{
+  position: absolute;
+  top: 7rem;
+}
+
+#welcome-section{
+  color: white;
+  gap: 5px;
+  font-size: calc(1vw + 2rem);
+  font-weight: 300;
+  letter-spacing: 1px;
+  text-align: center;
+  justify-content: center;
+}
+
+#welcome-section button{
+  border: 2px solid rgb(255, 225, 52);
+  border-radius: 3px;
+  color: gold;
+  padding: 7px 20px;
+  font-size: calc(1vw + 1rem);
+  transition: 150ms border-color, 150ms transform;
+}
+
+#welcome-section button:hover{
+  animation: 2s ease-in infinite welcomebtn;
+}
+
+#welcome-section button:active{
+  transform: scale(1.1);
+}
+
+@keyframes welcomebtn{
+  0%{
+    border-color: rgb(255, 225, 52);
+  }
+  50%{
+    border-color: white;
+  }
+  100%{
+    border-color: rgb(255, 225, 52);
+  }
+}
+
+#menu{
+  color: white;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 2rem;
+  padding: 2rem 3rem;
+  height: 3rem;
+  font-size: calc(0.5vw + 1rem);
+  background: rgb(21, 21, 21);
+  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
+  transition: 350ms opacity;
+  opacity: 0;
+}
+
+.menu-style{
+  opacity: 0.9 !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+}
+
+#menu button{
+  transition: 300ms color, 100ms border-bottom;
+}
+
+#menu button:hover{
+  color: gold;
+  border-bottom: 3px solid rgb(255, 225, 52);
+}
+
+.menu-style-btn{
+  color: gold;
+  border-bottom: 3px solid rgb(255, 225, 52);
+}
+
+#about-section {
+
+}
+
