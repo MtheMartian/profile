@@ -97,12 +97,14 @@ function Projects(){
       <div id="projects">
         <div id="projects-wrapper">
           {projects.map((project, index)=>
-            <div className="project-wrappers">
-              <img src={project.img} alt="Project" />
-              <div className="project-description">
-                <h2>{project.name}</h2>
-                <a href={project.link}>Live</a>
-                <a href={project.code}>Code</a>
+            <div className={index % 2 === 0 ? "project-container-left" : "project-container-right"}>
+              <div className="project-wrappers">
+                <img src={project.img} alt="Project" />
+                <div className={index % 2 === 0 ? "project-description-left" : "project-description-right"}>
+                  <h2>{project.name}</h2>
+                  <div className="project-links-bg"><a href={project.link}>Live</a></div>
+                  <div className="project-links-bg"><a href={project.code}>Code</a></div>
+              </div>
               </div>
             </div>
           )}
@@ -125,7 +127,7 @@ export default function Portfolio(){
 
   // Highlight Menu Items
   useEffect(()=>{
-    let observer: IntersectionObserver = new IntersectionObserver(highlightMenu, {threshold: 0.5});
+    let observer: IntersectionObserver = new IntersectionObserver(highlightMenu, {threshold: 0.2});
     const elements: HTMLCollectionOf<Element> = document.getElementsByClassName("sections");
 
     for(let i: number = 0; i < elements.length; ++i){

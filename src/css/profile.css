@@ -5,13 +5,14 @@ button{
 body{
   overflow-x: hidden;
   background: rgb(29, 29, 29);
+  height: 100vh;
+  width: 100vw;
 }
 
 #portfolio{
-  height: 100vh;
-  width: 100vw;
   display: flex;
   flex-direction: column;
+  align-items: center;
   font-family: Nunito, Arial;
 }
 
@@ -29,7 +30,7 @@ body{
 
 .section-title{
   position: absolute;
-  top: 7rem;
+  top: 5rem;
   font-size: calc(1vw + 2.5rem);
   font-family: Roboto, Arial;
   letter-spacing: 1px;
@@ -92,7 +93,6 @@ body{
   font-size: calc(0.5vw + 1rem);
   background: rgb(21, 21, 21);
   box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
-  transition: 350ms opacity;
   opacity: 0;
 }
 
@@ -229,21 +229,64 @@ body{
 }
 
 /* ------- Projects ------- */
-#projects{
-  margin-top: 11em;
+#projects, #projects-wrapper, .project-container-left, .project-container-right{
+  width: 100%;
 }
 
-.project-wrappers{
-  background: rgb(7, 7, 7);
-  width: 60em;
-  padding-bottom: 5em;
-  padding-top: 5em;
+#projects-wrapper{
+  display: flex;
+  flex-direction: column;
+  gap: 10em;
+}
+
+#projects{
+  margin-top: 15em;
+}
+
+.project-container-left{
   display: flex;
   justify-content: flex-start;
   align-items: center;
+  padding-left: 7em;
+}
+
+.project-container-right{
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  padding-right: 7em;
+}
+
+.project-wrappers{
+  width: 60em;
+  position: relative;
+  color: white;
+  font-family: Roboto, Arial;
 }
 
 .project-wrappers img{
-  width: 90%;
+  width: 100%;
+}
+
+.project-description-left, .project-description-right{
+  position: absolute;
+  backdrop-filter: blur(10px);
+  background: linear-gradient(45deg, rgba(44, 44, 44, 0.3), rgba(20, 20, 20, 0.5));
+  border-radius: 5px;
+  padding: 1em;
+}
+
+.project-description-left{
+   right: -11em; top: 3em;
+}
+
+.project-description-right{
+  left: -11em; top: 3em;
+}
+
+.project-description-left h2, .project-description-right h2{
+  font-weight: 900;
+  font-size: calc(1vw + 1rem);
+  letter-spacing: 1px;
 }
 
