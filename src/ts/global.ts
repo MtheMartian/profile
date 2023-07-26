@@ -27,8 +27,7 @@ export function stringSlicer(s: string, char: string): string{
       end = i;
     }
   }
-
-  return s.slice(0, end - 1);
+  return s.slice(0, end);
 }
 
 export function clearHightlightedButtons(): void{

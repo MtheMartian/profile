@@ -1,31 +1,42 @@
 import {useEffect} from 'react';
 import '../css/profile.css';
-import {showMenu, highlightMenu} from '../ts/global';
+import {showMenu, highlightMenu, stringSlicer} from '../ts/global';
 import {skills} from '../ts/about';
 import {projects} from '../ts/projects';
+import ParticlesComponent from '../components/particles';
 
 function Welcome(){
   return(
     <section id="welcome-section" className="sections">
-      <p>Welcome, I'm <span style={{color: "gold"}}>Marvin</span>.</p>
+      <p>Welcome, I'm <span style={{color: "rgba(52, 69, 161, 1)"}}>Marvin</span>.</p>
       <p>I'm a full stack web developer.</p>
-      <button>View Work &#8675;</button>
+      <button onClick={()=>{document.getElementById("projects-section")!.scrollIntoView({
+      behavior: "smooth"
+    });}}>View Work &#8675;</button>
     </section>
   );
 }
 
 function SectionTitle(props:{content: string}){
   return(
-    <h1 className="section-title"><span style={{color: "gold"}}>&#60;</span>{props.content}<span style={{color: "gold"}}>/&#62;</span></h1>
+    <h1 className="section-title"><span style={{color: "rgba(52, 69, 161, 1)"}}>&#60;</span>{props.content}<span style={{color: "rgba(52, 69, 161, 1)"}}>/&#62;</span></h1>
   );
 }
 
 function Menu(){
+  function navigateToSection(e: React.MouseEvent):void{
+    const currentElement: string = stringSlicer(e.currentTarget.id, '-');
+    console.log(currentElement);
+    document.getElementById(`${currentElement}-section`)!.scrollIntoView({
+      behavior: "smooth"
+    });
+  }
+
   return(
     <header id="menu">
-      <button id="about-button" className="menu-buttons">About</button>
-      <button id="projects-button" className="menu-buttons">Projects</button>
-      <button id="contact-button" className="menu-buttons">Contact</button>
+      <button id="about-button" className="menu-buttons" onClick={navigateToSection}>About</button>
+      <button id="projects-button" className="menu-buttons" onClick={navigateToSection}>Projects</button>
+      <button id="contacts-button" className="menu-buttons" onClick={navigateToSection}><a href="mailto:marvin.altidor@outlook.com" title='mail'>Contact</a></button>
     </header>
   );
 }
@@ -102,8 +113,8 @@ function Projects(){
                 <img src={project.img} alt="Project" />
                 <div className={index % 2 === 0 ? "project-description-left" : "project-description-right"}>
                   <h2>{project.name}</h2>
-                  <div className="project-links-bg"><a href={project.link}>Live</a></div>
-                  <div className="project-links-bg"><a href={project.code}>Code</a></div>
+                  <div className="project-links-bg"><a href={project.link} target="_blank">Live</a></div>
+                  <div className="project-links-bg"><a href={project.code} target="_blank">Code</a></div>
               </div>
               </div>
             </div>
@@ -111,6 +122,32 @@ function Projects(){
         </div>
       </div>
     </section>
+  );
+}
+
+function Footer(){
+  const contacts: {img: string, link: string}[] = [
+    {img: "./assets/github-light-64px.png", link: "https://github.com/MtheMartian"},
+    {img: "./assets/twitter-blue.png", link: "https://twitter.com/MtheMartian_"},
+    {img: "./assets/lin.png", link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}
+  ];
+
+  return(
+    <footer id="contacts-section">
+      <div>
+        <div>^</div>
+        <div>^</div>
+        <div>^</div>
+      </div>
+      <div id="contacts-wrapper">
+      {contacts.map((contact, index)=>
+        <a href={contact.link} title="contact" key={`contact-key${index}`} target="_blank">
+          <img src={contact.img} alt="contact" />
+        </a>
+      )}
+      </div>
+      <span>Marvin Altidor&reg;</span>
+    </footer>
   );
 }
 
@@ -141,10 +178,12 @@ export default function Portfolio(){
 
   return(
     <main id="portfolio">
+      <ParticlesComponent />
       <Welcome />
       <Menu />
       <About />
       <Projects />
+      <Footer />
     </main>
   );
 }

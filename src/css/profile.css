@@ -1,10 +1,14 @@
+html, body{
+  scroll-behavior: smooth;
+}
+
 button{
   cursor: pointer;
 }
 
 body{
   overflow-x: hidden;
-  background: rgb(29, 29, 29);
+  background: rgb(0, 0, 0);
   height: 100vh;
   width: 100vw;
 }
@@ -53,9 +57,9 @@ body{
 }
 
 #welcome-section button{
-  border: 2px solid rgb(255, 225, 52);
+  border: 2px solid rgba(68, 81, 158, 1);
   border-radius: 5px;
-  color: gold;
+  color: rgb(130, 134, 160);
   padding: 7px 20px;
   font-size: calc(1vw + 1rem);
   transition: 150ms border-color, 150ms transform;
@@ -71,13 +75,13 @@ body{
 
 @keyframes welcomebtn{
   0%{
-    border-color: rgb(255, 225, 52);
+    border-color: rgba(52, 69, 161, 1);
   }
   50%{
     border-color: white;
   }
   100%{
-    border-color: rgb(255, 225, 52);
+    border-color: rgba(52, 69, 161, 1);
   }
 }
 
@@ -91,8 +95,9 @@ body{
   padding: 2rem 3rem;
   height: 3rem;
   font-size: calc(0.5vw + 1rem);
-  background: rgb(21, 21, 21);
-  box-shadow: 1px 5px 5px rgba(0, 0, 0, 0.7);
+  background: rgba(21, 21, 21, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.3);
   opacity: 0;
 }
 
@@ -110,12 +115,18 @@ body{
 }
 
 #menu button:hover{
-  color: gold;
+  color: rgba(52, 69, 161, 1);
 }
 
 .menu-style-btn{
-  color: gold;
-  border-bottom: 3px solid rgb(255, 225, 52);
+  color: rgba(52, 69, 161, 1);
+  border-bottom: 3px solid rgba(68, 81, 158, 1);
+}
+
+@media only screen and (max-width: 1200px){
+  #menu{
+    justify-content: center;
+  }
 }
 
 /* ------- About ------- */
@@ -145,8 +156,8 @@ body{
   height: 15em;
   width: 15em;
   position: relative;
-  background: rgb(29, 29, 29);
-  border: 3px solid transparent;
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid transparent;
   background-clip: padding-box;
   display: flex;
   align-items: center;
@@ -156,10 +167,11 @@ body{
     content: '';
     position: absolute;
     top: 0; bottom: 0; left: 0; right: 0;
-    background: linear-gradient(to right, rgb(255, 93, 93), rgb(255, 225, 52));
+    background: linear-gradient(45deg, rgba(52, 69, 161, 0.19), rgba(200, 210, 255, 0.3));
+    filter: blur(1px);
     border-radius: inherit;
     z-index: -1;
-    margin: -3px;
+    margin: -1px;
   }
 }
 
@@ -189,9 +201,9 @@ body{
   justify-content: center;
   position: relative;
   box-sizing: border-box;
-  border: 3px solid transparent;
+  border: 1px solid transparent;
   color: #FFF;
-  background: rgb(29, 29, 29);
+  background: rgba(0, 0, 0, 0.7);
   background-clip: padding-box;
   border-radius: 1em;
   padding: 0.5em 2em;
@@ -201,9 +213,10 @@ body{
     position: absolute;
     top: 0; right: 0; bottom: 0; left: 0;
     z-index: -1;
-    margin: -3px;
+    margin: -1px;
     border-radius: inherit;
-    background: linear-gradient(to right, rgb(255, 93, 93), rgb(255, 225, 52));
+    background: linear-gradient(45deg, rgba(52, 69, 161, 0.19), rgba(200, 210, 255, 0.3));
+    filter: blur(1px);
   }
 }
 
@@ -228,6 +241,19 @@ body{
   letter-spacing: 2px;
 }
 
+@media only screen and (max-width: 1200px){
+  #about-section-content{
+    flex-direction: column;
+    gap: 3em;
+    margin-top: 30em;
+    padding-bottom: 20em;
+  }
+
+  #about-section-content p{
+    width: 77%;
+  }
+}
+
 /* ------- Projects ------- */
 #projects, #projects-wrapper, .project-container-left, .project-container-right{
   width: 100%;
@@ -241,6 +267,7 @@ body{
 
 #projects{
   margin-top: 15em;
+  padding-bottom: 10em;
 }
 
 .project-container-left{
@@ -270,10 +297,18 @@ body{
 
 .project-description-left, .project-description-right{
   position: absolute;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
-  background: linear-gradient(45deg, rgba(44, 44, 44, 0.3), rgba(20, 20, 20, 0.5));
+  background: linear-gradient(45deg, rgba(52, 69, 161, 0.1), rgba(200, 210, 255, 0.1));
+  border: 1px solid rgba(200, 210, 255, 0.1);
   border-radius: 5px;
   padding: 1em;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
 }
 
 .project-description-left{
@@ -284,9 +319,71 @@ body{
   left: -11em; top: 3em;
 }
 
+.project-links-bg{
+ transition: 200ms all;
+}
+
+.project-links-bg:hover{
+  border-bottom:5px solid rgba(52, 69, 161, 1);
+}
+
 .project-description-left h2, .project-description-right h2{
   font-weight: 900;
   font-size: calc(1vw + 1rem);
   letter-spacing: 1px;
 }
 
+@media only screen and (max-width: 1200px){
+  .project-container-left, .project-container-right{
+    justify-content: center;
+    padding: 0;
+  }
+
+  .project-container-left, .project-container-right{
+    transform: scale(0.8);
+  }
+
+  .project-description-left{
+    top: 0;
+    right: 0;
+  }
+
+  .project-description-right{
+    top: 0;
+    left: 0;
+  }
+
+
+}
+
+/* ------- Footer(contact) -------*/
+#contacts-section{
+  height: 10em;
+  background: rgba(21, 21, 21, 0.3);
+  backdrop-filter: blur(10px);
+  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.3);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#contacts-wrapper{
+  border-bottom: 1px solid white;
+  padding: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
+}
+
+#contacts-section img{
+  width: 32px;
+}
+
+#contacts-section span{
+  color: white; 
+  margin-top: 7px;
+  font-size: calc(0.5vw + 0.2rem);
+}
