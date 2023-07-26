@@ -1,5 +1,4 @@
 import {useEffect} from 'react';
-import '../css/profile.css';
 import {showMenu, highlightMenu, stringSlicer} from '../ts/global';
 import {skills} from '../ts/about';
 import {projects} from '../ts/projects';
@@ -26,7 +25,6 @@ function SectionTitle(props:{content: string}){
 function Menu(){
   function navigateToSection(e: React.MouseEvent):void{
     const currentElement: string = stringSlicer(e.currentTarget.id, '-');
-    console.log(currentElement);
     document.getElementById(`${currentElement}-section`)!.scrollIntoView({
       behavior: "smooth"
     });
@@ -86,11 +84,10 @@ function About(){
       <div id="about-section-content">
         <div id="about-section-me">
           <div id="about-section-picture-border">
-            <img src={"./assets/test.png"} alt="Silhouette" />
+            <img src={"./main/assets/test.png"} alt="Silhouette" />
           </div>
           <p>
-            Someone who spent too much time on the computer, 
-            found out what coding was and been intrigued ever since.
+            I'm someone who loves coding and got into it because of video games. Since I was young, I was fascinated by how games worked, the mechanics, and the immersive experiences they offered. I started exploring the code behind them, how characters came to life, and how gameplay was governed. As I delved deeper, I fell in love with coding's challenges and creativity. Today, coding has become my favorite hobby, where I turn ideas into digital creations. I find joy in the logical problem-solving aspect of it.
           </p>
         </div>
         <div id="tools">
@@ -108,13 +105,13 @@ function Projects(){
       <div id="projects">
         <div id="projects-wrapper">
           {projects.map((project, index)=>
-            <div className={index % 2 === 0 ? "project-container-left" : "project-container-right"}>
+            <div className={index % 2 === 0 ? "project-container-left" : "project-container-right" } key={`project-key${index}`}>
               <div className="project-wrappers">
                 <img src={project.img} alt="Project" />
                 <div className={index % 2 === 0 ? "project-description-left" : "project-description-right"}>
                   <h2>{project.name}</h2>
-                  <div className="project-links-bg"><a href={project.link} target="_blank">Live</a></div>
-                  <div className="project-links-bg"><a href={project.code} target="_blank">Code</a></div>
+                  <div className="project-links-bg"><a href={project.link} target="_blank" rel="noreferrer">Live</a></div>
+                  <div className="project-links-bg"><a href={project.code} target="_blank" rel="noreferrer">Code</a></div>
               </div>
               </div>
             </div>
@@ -127,21 +124,23 @@ function Projects(){
 
 function Footer(){
   const contacts: {img: string, link: string}[] = [
-    {img: "./assets/github-light-64px.png", link: "https://github.com/MtheMartian"},
-    {img: "./assets/twitter-blue.png", link: "https://twitter.com/MtheMartian_"},
-    {img: "./assets/lin.png", link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}
+    {img: "./main/assets/github-light-64px.png", link: "https://github.com/MtheMartian"},
+    {img: "./main/assets/twitter-blue.png", link: "https://twitter.com/MtheMartian_"},
+    {img: "./main/assets/lin.png", link: "https://www.linkedin.com/in/marvin-altidor-419b60249/"}
   ];
 
   return(
     <footer id="contacts-section">
-      <div>
+      <button id="return-top" onClick={()=>{
+        document.getElementById("welcome-section")!.scrollIntoView({behavior: "smooth"});
+      }}>
         <div>^</div>
         <div>^</div>
         <div>^</div>
-      </div>
+      </button>
       <div id="contacts-wrapper">
       {contacts.map((contact, index)=>
-        <a href={contact.link} title="contact" key={`contact-key${index}`} target="_blank">
+        <a href={contact.link} title="contact" key={`contact-key${index}`} target="_blank" rel="noreferrer">
           <img src={contact.img} alt="contact" />
         </a>
       )}
@@ -164,7 +163,7 @@ export default function Portfolio(){
 
   // Highlight Menu Items
   useEffect(()=>{
-    let observer: IntersectionObserver = new IntersectionObserver(highlightMenu, {threshold: 0.2});
+    let observer: IntersectionObserver = new IntersectionObserver(highlightMenu, {threshold: 0.21});
     const elements: HTMLCollectionOf<Element> = document.getElementsByClassName("sections");
 
     for(let i: number = 0; i < elements.length; ++i){

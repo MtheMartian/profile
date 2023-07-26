@@ -97,7 +97,7 @@ body{
   font-size: calc(0.5vw + 1rem);
   background: rgba(21, 21, 21, 0.3);
   backdrop-filter: blur(10px);
-  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.3);
+  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.7);
   opacity: 0;
 }
 
@@ -140,6 +140,7 @@ body{
 
 #about-section-content p{
   max-width: 40rem;
+  line-height: 2em;
 }
 
 #about-section-me{
@@ -361,12 +362,13 @@ body{
   height: 10em;
   background: rgba(21, 21, 21, 0.3);
   backdrop-filter: blur(10px);
-  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.3);
+  box-shadow: 1px 1px 5px rgba(68, 81, 158, 0.7);
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 #contacts-wrapper{
@@ -386,4 +388,44 @@ body{
   color: white; 
   margin-top: 7px;
   font-size: calc(0.5vw + 0.2rem);
+}
+
+#return-top{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: rgba(52, 69, 161, 1);
+  font-weight: 700;
+  border: 1px solid rgb(48, 48, 48);
+  padding: 15px 12px 1px 12px;
+  position: absolute;
+  top: -2em;
+  background:rgba(21, 21, 21, 0.3);
+}
+
+#return-top:hover{
+  animation: 3s ease-in infinite waves;
+}
+
+@keyframes waves{
+  0%{
+    color: rgba(52, 69, 161, 1);
+  }
+  25%{
+    color: rgb(69, 82, 156);
+  }
+  50%{
+    color: rgb(103, 111, 158);
+  }
+  75%{
+    color: rgb(123, 129, 163);
+  }
+  100%{
+    color: rgba(52, 69, 161, 1);
+  }
+}
+
+#return-top div{
+  margin-top: -15px;
 }
