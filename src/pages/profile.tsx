@@ -9,9 +9,9 @@ function Welcome(){
     <section id="welcome-section" className="sections">
       <p>Welcome, I'm <span style={{color: "rgba(52, 69, 161, 1)"}}>Marvin</span>.</p>
       <p>I'm a full stack web developer.</p>
-      <button onClick={()=>{document.getElementById("projects-section")!.scrollIntoView({
+      <a onClick={()=>{document.getElementById("projects-section")!.scrollIntoView({
       behavior: "smooth"
-    });}}>View Work &#8675;</button>
+    });}}>View Work &#8675;</a>
     </section>
   );
 }
@@ -23,7 +23,7 @@ function SectionTitle(props:{content: string}){
 }
 
 function Menu(){
-  function navigateToSection(e: React.MouseEvent):void{
+  function navigateToSection(e: React.MouseEvent): void{
     const currentElement: string = stringSlicer(e.currentTarget.id, '-');
     document.getElementById(`${currentElement}-section`)!.scrollIntoView({
       behavior: "smooth"
@@ -32,9 +32,9 @@ function Menu(){
 
   return(
     <header id="menu">
-      <button id="about-button" className="menu-buttons" onClick={navigateToSection}>About</button>
-      <button id="projects-button" className="menu-buttons" onClick={navigateToSection}>Projects</button>
-      <button id="contacts-button" className="menu-buttons" onClick={navigateToSection}><a href="mailto:marvin.altidor@outlook.com" title='mail'>Contact</a></button>
+      <a id="about-button" className="menu-buttons" onClick={navigateToSection}>About</a>
+      <a id="projects-button" className="menu-buttons" onClick={navigateToSection}>Projects</a>
+      <a id="contacts-button" className="menu-buttons" onClick={navigateToSection} href="mailto:marvin.altidor@outlook.com" title='mail'>Contact</a>
     </header>
   );
 }
@@ -131,13 +131,14 @@ function Footer(){
 
   return(
     <footer id="contacts-section">
-      <button id="return-top" onClick={()=>{
+      <a id="return-top" onClick={(e)=>{
+        e.preventDefault();
         document.getElementById("welcome-section")!.scrollIntoView({behavior: "smooth"});
       }}>
         <div>^</div>
         <div>^</div>
         <div>^</div>
-      </button>
+      </a>
       <div id="contacts-wrapper">
       {contacts.map((contact, index)=>
         <a href={contact.link} title="contact" key={`contact-key${index}`} target="_blank" rel="noreferrer">

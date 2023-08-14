@@ -2,7 +2,7 @@ html, body{
   scroll-behavior: smooth;
 }
 
-button{
+a, button{
   cursor: pointer;
 }
 
@@ -56,7 +56,7 @@ body{
   justify-content: center;
 }
 
-#welcome-section button{
+#welcome-section a{
   border: 2px solid rgba(68, 81, 158, 1);
   border-radius: 5px;
   color: rgb(130, 134, 160);
@@ -65,11 +65,11 @@ body{
   transition: 150ms border-color, 150ms transform;
 }
 
-#welcome-section button:hover{
+#welcome-section a:hover{
   animation: 2s ease-in infinite welcomebtn;
 }
 
-#welcome-section button:active{
+#welcome-section a:active{
   transform: scale(1.1);
 }
 
@@ -110,11 +110,11 @@ body{
   z-index: 1;
 }
 
-#menu button{
+#menu {
   transition: 300ms color, 100ms border-bottom;
 }
 
-#menu button:hover{
+#menu :hover{
   color: rgba(52, 69, 161, 1);
 }
 
